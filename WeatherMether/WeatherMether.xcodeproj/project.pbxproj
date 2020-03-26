@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A109242CA696006CC1EF /* NetworkError.swift */; };
+		6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10B242CAA8A006CC1EF /* APIRouter.swift */; };
+		6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10D242CB592006CC1EF /* JsonParser.swift */; };
+		6655A110242CB8A3006CC1EF /* NetworkRequestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */; };
 		667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C42426196700B1D81A /* AppDelegate.swift */; };
 		667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C62426196700B1D81A /* SceneDelegate.swift */; };
 		667CB4C92426196700B1D81A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C82426196700B1D81A /* ContentView.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6655A109242CA696006CC1EF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		6655A10B242CAA8A006CC1EF /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		6655A10D242CB592006CC1EF /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestAgent.swift; sourceTree = "<group>"; };
 		667CB4C12426196700B1D81A /* WeatherMether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CB4C42426196700B1D81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CB4C62426196700B1D81A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6655A108242CA67E006CC1EF /* Netwoork */ = {
+			isa = PBXGroup;
+			children = (
+				6655A109242CA696006CC1EF /* NetworkError.swift */,
+				6655A10B242CAA8A006CC1EF /* APIRouter.swift */,
+				6655A10D242CB592006CC1EF /* JsonParser.swift */,
+				6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */,
+			);
+			path = Netwoork;
+			sourceTree = "<group>";
+		};
 		667CB4B82426196700B1D81A = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +118,7 @@
 		667CB4C32426196700B1D81A /* WeatherMether */ = {
 			isa = PBXGroup;
 			children = (
+				6655A108242CA67E006CC1EF /* Netwoork */,
 				667CB4C42426196700B1D81A /* AppDelegate.swift */,
 				667CB4C62426196700B1D81A /* SceneDelegate.swift */,
 				667CB4C82426196700B1D81A /* ContentView.swift */,
@@ -268,8 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */,
+				6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */,
+				6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */,
+				6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */,
 				667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */,
 				667CB4C92426196700B1D81A /* ContentView.swift in Sources */,
+				6655A110242CB8A3006CC1EF /* NetworkRequestAgent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,14 +460,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherMether/Preview Content\"";
-				DEVELOPMENT_TEAM = 674895MZDB;
+				DEVELOPMENT_TEAM = UGM9RU5T36;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WeatherMether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.whiteOwl.WeatherMether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whiteOwl.WeatherMetherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,14 +480,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherMether/Preview Content\"";
-				DEVELOPMENT_TEAM = 674895MZDB;
+				DEVELOPMENT_TEAM = UGM9RU5T36;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WeatherMether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.whiteOwl.WeatherMether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whiteOwl.WeatherMetherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
