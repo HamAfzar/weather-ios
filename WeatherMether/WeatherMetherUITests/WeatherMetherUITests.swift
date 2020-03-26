@@ -3,7 +3,7 @@
 //  WeatherMetherUITests
 //
 //  Created by amirhosseinpy on 1/2/1399 AP.
-//  Copyright © 1399 WhiteOwl. All rights reserved.
+//  Copyright © 1399 Sepitmaan. All rights reserved.
 //
 
 import XCTest
