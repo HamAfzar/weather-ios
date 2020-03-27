@@ -31,6 +31,8 @@
 		726C40BD242DD0C400FE10B7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 726C40B2242DCFC500FE10B7 /* Roboto-Medium.ttf */; };
 		726C40BE242DD0CB00FE10B7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 726C40B3242DCFC500FE10B7 /* Roboto-Regular.ttf */; };
 		726C40C0242DD18D00FE10B7 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726C40BF242DD18D00FE10B7 /* FontExtensions.swift */; };
+		726C40C3242DDC7700FE10B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726C40C2242DDC7700FE10B7 /* HomeView.swift */; };
+		726C40C5242DED8300FE10B7 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726C40C4242DED8300FE10B7 /* BaseText.swift */; };
 		72CD6531242CE4ED001E9638 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6530242CE4ED001E9638 /* BaseView.swift */; };
 		72CD6534242CE8F3001E9638 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6533242CE8F3001E9638 /* ColorExtensions.swift */; };
 		72CD6536242CF54D001E9638 /* ShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6535242CF54D001E9638 /* ShadowedView.swift */; };
@@ -84,6 +86,8 @@
 		726C40B3242DCFC500FE10B7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		726C40B4242DCFC500FE10B7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		726C40BF242DD18D00FE10B7 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		726C40C2242DDC7700FE10B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		726C40C4242DED8300FE10B7 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		72CD6530242CE4ED001E9638 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		72CD6533242CE8F3001E9638 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		72CD6535242CF54D001E9638 /* ShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowedView.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		667CB4C32426196700B1D81A /* WeatherMether */ = {
 			isa = PBXGroup;
 			children = (
+				726C40C1242DDC6100FE10B7 /* Home */,
 				726C408C242DCCA900FE10B7 /* Resources */,
 				72CD6532242CE8D9001E9638 /* Extensions */,
 				72CD652F242CE4DC001E9638 /* BaseViews */,
@@ -230,12 +235,21 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
+		726C40C1242DDC6100FE10B7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				726C40C2242DDC7700FE10B7 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		72CD652F242CE4DC001E9638 /* BaseViews */ = {
 			isa = PBXGroup;
 			children = (
 				72CD6530242CE4ED001E9638 /* BaseView.swift */,
 				72CD6535242CF54D001E9638 /* ShadowedView.swift */,
 				7269999E242D4FF900C48596 /* HomeNavigationView.swift */,
+				726C40C4242DED8300FE10B7 /* BaseText.swift */,
 			);
 			path = BaseViews;
 			sourceTree = "<group>";
@@ -391,7 +405,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */,
+				726C40C5242DED8300FE10B7 /* BaseText.swift in Sources */,
 				726C40C0242DD18D00FE10B7 /* FontExtensions.swift in Sources */,
+				726C40C3242DDC7700FE10B7 /* HomeView.swift in Sources */,
 				6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */,
 				6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */,
 				6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */,

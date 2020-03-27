@@ -37,4 +37,8 @@ extension Color {
     public static var shadowedViewBackground: Color {
         return Color(netHex: 0xf7f7f7)
     }
+    
+    public static var baseTextColor: Color {
+        return Color(netHex: 0x283142)
+    }
 }

@@ -25,9 +25,7 @@ struct ShadowedView<Content: View>: View {
                 .border(Color.shadowedViewBorder)
                 
                 .frame(height: 108)
-            
-            Text("ABC")
-            
+            content
         }
     }
 }

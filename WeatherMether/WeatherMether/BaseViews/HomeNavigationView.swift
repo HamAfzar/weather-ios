@@ -12,16 +12,19 @@ struct HomeNavigationView<Content: View>: View {
     private let content: Content
     
     public init(@ViewBuilder content: () -> Content) {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().tintColor = .clear
+        UINavigationBar.appearance().backgroundColor = .clear
+        
         self.content = content()
     }
     
     var body: some View {
         NavigationView {
             content
-                .navigationBarItems(
-                    leading: Image("Home_DetailButton_ic"),
-                    trailing: Image("Home_SearchButton_ic")
-            )
+                .navigationBarTitle("", displayMode: .inline)
         }
     }
 }
