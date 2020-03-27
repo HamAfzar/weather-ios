@@ -17,7 +17,7 @@ struct BaseView<Content: View>: View {
     
     var body: some View {
         ZStack {
-            Color.baseBackground.edgesIgnoringSafeArea(.all)
+            CustomColorName.baseBackground.getColor().edgesIgnoringSafeArea(.all)
             content
         }
     }

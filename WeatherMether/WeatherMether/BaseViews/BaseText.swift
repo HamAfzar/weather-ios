@@ -11,7 +11,7 @@ import SwiftUI
 struct BaseText: View {
     var text: String
     var font: Font
-    var color: Color = Color.baseTextColor
+    var color: Color = CustomColorName.baseText.getColor()
     
     var body: some View {
         Text(self.text)

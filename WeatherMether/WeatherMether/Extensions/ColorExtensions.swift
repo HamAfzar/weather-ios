@@ -25,20 +25,14 @@ extension Color {
     }
 }
 
-extension Color {
-    public static var baseBackground: Color {
-        return Color(netHex: 0xF7F7F7)
-    }
+
+enum CustomColorName: String {
+    case baseBackground                    = "baseBackground"
+    case shadowedViewShadow                = "shadowedViewShadow"
+    case baseText                          = "baseTextColor"
     
-    public static var shadowedViewBorder: Color {
-        return Color(netHex: 0xffffff)
-    }
-    
-    public static var shadowedViewBackground: Color {
-        return Color(netHex: 0xf7f7f7)
-    }
-    
-    public static var baseTextColor: Color {
-        return Color(netHex: 0x283142)
+    func getColor() -> Color {
+        return Color(self.rawValue)
     }
 }
+

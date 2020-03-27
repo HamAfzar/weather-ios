@@ -18,11 +18,11 @@ struct ShadowedView<Content: View>: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 7)
-                .foregroundColor(Color.shadowedViewBackground)
+                .foregroundColor(CustomColorName.baseBackground.getColor())
                 
-                .shadow(color: Color.shadowedViewBorder, radius: 7, x: -5, y: -7)
+                .shadow(color: CustomColorName.shadowedViewShadow.getColor(), radius: 7, x: -5, y: -7)
                 .blur(radius: 1)
-                .border(Color.shadowedViewBorder)
+                .border(CustomColorName.shadowedViewShadow.getColor())
                 
                 .frame(height: 108)
             content
