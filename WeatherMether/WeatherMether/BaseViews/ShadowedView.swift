@@ -16,15 +16,16 @@ struct ShadowedView<Content: View>: View {
     }
     
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 7)
-                .foregroundColor(CustomColorName.baseBackground.getColor())
-                
-                .shadow(color: CustomColorName.shadowedViewShadow.getColor(), radius: 7, x: -5, y: -7)
-                .blur(radius: 1)
-                .border(CustomColorName.shadowedViewShadow.getColor())
-                
-                .frame(height: 108)
+        ZStack {
+            Rectangle()
+                .fill(CustomColorName.baseBackground.getColor)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(CustomColorName.baseBackground.getColor)
+                .frame(width: 300, height: 180)
+                .shadow(color: Color("lightShadow"), radius: 8, x: -8, y: -8)
+                .shadow(color: Color("darkShadow"), radius: 8, x: 8, y: 8)
             content
         }
     }
