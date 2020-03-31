@@ -9,10 +9,15 @@
 import SwiftUI
 
 struct ShadowedView<Content: View>: View {
+    var width: CGFloat
+    var height: CGFloat
+    
     private let content: Content
     
-    public init(@ViewBuilder content: () -> Content) {
+    public init(width: CGFloat, height: CGFloat, @ViewBuilder content: () -> Content) {
         self.content = content()
+        self.width = width
+        self.height = height
     }
     
     var body: some View {
@@ -21,12 +26,15 @@ struct ShadowedView<Content: View>: View {
                 .fill(CustomColorName.baseBackground.getColor)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 7)
                 .fill(CustomColorName.baseBackground.getColor)
-                .frame(width: 300, height: 180)
-                .shadow(color: Color("lightShadow"), radius: 8, x: -8, y: -8)
-                .shadow(color: Color("darkShadow"), radius: 8, x: 8, y: 8)
+                .frame(height: height)
+                .shadow(color: CustomColorName.shadowedViewLightShadow.getColor, radius: 3, x: -5, y: -7)
+                .shadow(color: CustomColorName.shadowedViewDarkShadow.getColor, radius: 3, x: 5, y: 7)
+                .blur(radius: 0.1)
+            
             content
         }
+        .frame(width: width, height: height, alignment: .center)
     }
 }
