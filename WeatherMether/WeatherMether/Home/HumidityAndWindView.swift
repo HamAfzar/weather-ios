@@ -24,7 +24,7 @@ struct HumidityAndWindView: View {
                     CGPoint(x: middle - halfOfLineWidth, y: 16),
                     CGPoint(x: middle - halfOfLineWidth, y: height - 16),
                     CGPoint(x: middle + halfOfLineWidth, y: height - 16),
-                    CGPoint(x: middle + halfOfLineWidth, y: 16),
+                    CGPoint(x: middle + halfOfLineWidth, y: 16)
                 ])
             }
             .fill(CustomColorName.baseText.getColor)

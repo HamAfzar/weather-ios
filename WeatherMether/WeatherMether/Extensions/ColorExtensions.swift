@@ -17,4 +17,3 @@ enum CustomColorName: String {
         return Color(self.rawValue)
     }
 }
-
