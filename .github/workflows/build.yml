@@ -15,7 +15,9 @@ jobs:
 steps:
 - name: Checkout
 - uses: actions/checkout@v2
-- name: Force xcode 11
-run: sudo xcode-select -switch /Applications/Xcode_11.4.app
+- name: Select Xcode
+  run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+- name: Xcode version
+  run: /usr/bin/xcodebuild -version
 - name: iPhone 11 Test
-run: xcodebuild test -scheme WeatherMetherTests -workspace WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.4'
+run: xcodebuild test -scheme weather-ios/WeatherMether/WeatherMetherTests -workspace weather-ios/WeatherMether/WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
