@@ -21,4 +21,4 @@ jobs:
       run: /usr/bin/xcodebuild -version
       
     - name: iPhone 11 Test
-      run: xcodebuild test -scheme WeatherMether/WeatherMetherTests -workspace WeatherMether/WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
+      run:  xcodebuild test -scheme WeatherMether -project WeatherMether/WeatherMether.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
