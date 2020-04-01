@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  BaseHomeView.swift
 //  WeatherMether
 //
 //  Created by Sadegh on 1/8/1399 AP.

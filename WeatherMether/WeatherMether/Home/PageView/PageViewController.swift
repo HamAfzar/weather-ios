@@ -28,8 +28,12 @@ struct PageViewController: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+        var animated = false
+        if self.controllers.count > 1 {
+            animated = true
+        }
         pageViewController.setViewControllers(
-            [controllers[currentPage]], direction: .forward, animated: true)
+            [controllers[currentPage]], direction: .forward, animated: animated)
     }
     
     class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {

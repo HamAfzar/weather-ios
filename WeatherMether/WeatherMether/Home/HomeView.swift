@@ -9,9 +9,31 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var showingDetail = true
+    @State private  var showingDetail = false
     
-    var profileButton: some View {
+    var body: some View {
+        BaseNavigationView {
+            ZStack {
+                BaseView {
+                    PageView([BaseHomeView()])
+                        .navigationBarItems(
+                            leading: self.searchButton,
+                            trailing: self.profileButton
+                    )
+                }
+                
+                VStack {
+                    if showingDetail {
+                        optionView(showView: $showingDetail)
+                            .transition(.move(edge: .bottom))
+                            .edgesIgnoringSafeArea(.bottom)
+                    }
+                }
+            }
+        }
+    }
+    
+    private var profileButton: some View {
         Button(action: {
             withAnimation {
                 self.showingDetail.toggle()
@@ -22,23 +44,13 @@ struct HomeView: View {
         })
     }
     
-    var body: some View {
-        BaseNavigationView {
-            ZStack {
-                BaseView {
-                    //                    PageView([BaseHomeView()])
-                    BaseHomeView()
-                        .navigationBarItems(trailing: self.profileButton)
-                }
-                
-                if showingDetail {
-                    MainDetailView()
-                        .transition(.move(edge: .bottom))
-                        .edgesIgnoringSafeArea(.bottom)
-                    //                        .frame(height: 200)
-                }
-            }
-        }
+    private var searchButton: some View {
+        Button(action: {
+            
+        }, label: {
+            Image("ic_home_searchButton")
+                .foregroundColor(CustomColorName.baseText.getColor)
+        })
     }
 }
 

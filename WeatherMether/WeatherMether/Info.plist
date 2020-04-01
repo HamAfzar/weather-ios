@@ -58,11 +58,6 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SansMobile-Black.ttf</string>
-		<string>SansMobile-Bold.ttf</string>
-		<string>SansMobile-Light.ttf</string>
-		<string>SansMobile-Medium.ttf</string>
-		<string>SansMobile.ttf</string>
 		<string>Roboto-Black.ttf</string>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Light.ttf</string>
