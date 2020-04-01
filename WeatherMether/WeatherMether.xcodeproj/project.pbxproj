@@ -12,6 +12,8 @@
 		663EBBB92433332A00B044CA /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB52433332A00B044CA /* APIRouter.swift */; };
 		663EBBBA2433332A00B044CA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB62433332A00B044CA /* NetworkError.swift */; };
 		663EBBBB2433332A00B044CA /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB72433332A00B044CA /* JsonParser.swift */; };
+		663EBBC02434AC2B00B044CA /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBBF2434AC2B00B044CA /* SplashView.swift */; };
+		663EBBC22434B28800B044CA /* ImageRefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBC12434B28800B044CA /* ImageRefrences.swift */; };
 		667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C42426196700B1D81A /* AppDelegate.swift */; };
 		667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C62426196700B1D81A /* SceneDelegate.swift */; };
 		667CB4C92426196700B1D81A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C82426196700B1D81A /* ContentView.swift */; };
@@ -64,6 +66,8 @@
 		663EBBB52433332A00B044CA /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		663EBBB62433332A00B044CA /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		663EBBB72433332A00B044CA /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		663EBBBF2434AC2B00B044CA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		663EBBC12434B28800B044CA /* ImageRefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRefrences.swift; sourceTree = "<group>"; };
 		667CB4C12426196700B1D81A /* WeatherMether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CB4C42426196700B1D81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CB4C62426196700B1D81A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +147,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		663EBBBE2434AB3200B044CA /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				663EBBBF2434AC2B00B044CA /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		667CB4B82426196700B1D81A = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +178,7 @@
 		667CB4C32426196700B1D81A /* WeatherMether */ = {
 			isa = PBXGroup;
 			children = (
+				663EBBBE2434AB3200B044CA /* Splash */,
 				663EBBB32433332A00B044CA /* Network */,
 				663EBBB024332A6100B044CA /* Utilities */,
 				726C40C1242DDC6100FE10B7 /* Home */,
@@ -262,6 +275,7 @@
 		726C40C8242E6F3500FE10B7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				663EBBC12434B28800B044CA /* ImageRefrences.swift */,
 				667CB4CA2426196900B1D81A /* Assets.xcassets */,
 				726C40C6242E044200FE10B7 /* ColorAssets.xcassets */,
 			);
@@ -454,6 +468,7 @@
 			files = (
 				667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */,
 				663EBBB92433332A00B044CA /* APIRouter.swift in Sources */,
+				663EBBC02434AC2B00B044CA /* SplashView.swift in Sources */,
 				726C40C5242DED8300FE10B7 /* BaseText.swift in Sources */,
 				726C40C0242DD18D00FE10B7 /* FontExtensions.swift in Sources */,
 				726C40C3242DDC7700FE10B7 /* HomeView.swift in Sources */,
@@ -466,6 +481,7 @@
 				7269999F242D4FF900C48596 /* HomeNavigationView.swift in Sources */,
 				667CB4C92426196700B1D81A /* ContentView.swift in Sources */,
 				72CD6531242CE4ED001E9638 /* BaseView.swift in Sources */,
+				663EBBC22434B28800B044CA /* ImageRefrences.swift in Sources */,
 				72CD6536242CF54D001E9638 /* ShadowedView.swift in Sources */,
 				663EBBBA2433332A00B044CA /* NetworkError.swift in Sources */,
 			);

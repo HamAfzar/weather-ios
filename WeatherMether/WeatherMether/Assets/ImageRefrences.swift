@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum ImageRefrences: String {
+    case weatherTypography = "ic_weather_typography"
+    case weatherStatus = "ic_weather_status"
+    
+    var getImageName: String {
+        return self.rawValue
+    }
+}

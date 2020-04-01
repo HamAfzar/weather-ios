@@ -9,8 +9,20 @@
 import SwiftUI
 
 struct SplashView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            ZStack {
+            CustomColorName.splashBackground.getColor.edgesIgnoringSafeArea(.all)
+                VStack { Image(ImageRefrences.weatherTypography.getImageName)
+                    .padding(EdgeInsets(top: geometry.size.height/4, leading: 0, bottom: 0, trailing: 0))
+                    Spacer()
+                    
+                Image(ImageRefrences.weatherStatus.getImageName).padding(EdgeInsets(top: 0, leading: 0, bottom: geometry.size.height/4, trailing: 0))
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

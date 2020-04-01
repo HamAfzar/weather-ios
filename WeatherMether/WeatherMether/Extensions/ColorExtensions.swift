@@ -12,6 +12,8 @@ enum CustomColorName: String {
     case baseBackground                    = "baseBackground"
     case shadowedViewShadow                = "shadowedViewShadow"
     case baseText                          = "baseTextColor"
+    case splashBackground                  =
+        "splashBackground"
     
     var getColor: Color {
         return Color(self.rawValue)
