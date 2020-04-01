@@ -9,25 +9,6 @@
 import SwiftUI
 
 extension Font {
-    static func sansBold(_ size: CGFloat) -> Font {
-        return Font.custom("SansMobile-Bold", size: size)
-    }
-    
-    static func sansLight(_ size: CGFloat) -> Font {
-        return Font.custom("SansMobile-Light", size: size)
-    }
-    
-    static func sansMedium(_ size: CGFloat) -> Font {
-        return Font.custom("SansMobile-Medium", size: size)
-    }
-    
-    static func sans(_ size: CGFloat) -> Font {
-        return Font.custom("SansMobile", size: size)
-    }
-    
-    static func sansBlack(_ size: CGFloat) -> Font {
-        return Font.custom("SansMobile-Black", size: size)
-    }
     
     static func robotoBold(_ size: CGFloat) -> Font {
         return Font.custom("Roboto-Bold", size: size)

@@ -2,59 +2,55 @@
 //  HomeView.swift
 //  WeatherMether
 //
-//  Created by Sadegh on 1/8/1399 AP.
+//  Created by Sadegh on 1/12/1399 AP.
 //  Copyright © 1399 Sepitmaan. All rights reserved.
 //
 
 import SwiftUI
 
 struct HomeView: View {
-    
-    private var cityNameAndDateView: some View {
-        VStack(alignment: .center, spacing: 4) {
-            BaseText(text: "New York", font: .robotoBold(29))
-            BaseText(text: "Mon, 2 Dec", font: .robotoMedium(18))
-        }
-    }
-    
-    private var weatherPredictionView: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            
-            HStack(alignment: .top, spacing: 8) {
-                BaseText(text: "9", font: .robotoBold(60))
-                BaseText(text: "°C", font: .roboto(33)).padding(.top, 8)
-            }
-            HStack(alignment: .center, spacing: 8) {
-                Image("ic_rainyWeather")
-                BaseText(text: "Raining", font: .robotoMedium(20))
-            }
-        }
-    }
+    @State private  var showingDetail = false
     
     var body: some View {
-        
-        HomeNavigationView {
-            BaseView {
-                VStack {
-                    self.cityNameAndDateView
-                        .padding(.top, 20)
-                    
-                    Spacer()
-                    self.weatherPredictionView
-                    
-                    Spacer()
-                    ShadowedView {
-                        Text("This is a Shadowed View")
-                    }
-                    .padding([.leading, .trailing], 20)
-                        
-                    .navigationBarItems(
-                        leading: Image("ic_home_detailButton"),
-                        trailing: Image("ic_home_searchButton")
+        BaseNavigationView {
+            ZStack {
+                BaseView {
+                    PageView([BaseHomeView()])
+                        .navigationBarItems(
+                            leading: self.searchButton,
+                            trailing: self.profileButton
                     )
+                }
+                
+                VStack {
+                    if showingDetail {
+                        OptionView(showView: $showingDetail)
+                            .transition(.move(edge: .bottom))
+                            .edgesIgnoringSafeArea(.bottom)
+                    }
                 }
             }
         }
+    }
+    
+    private var profileButton: some View {
+        Button(action: {
+            withAnimation {
+                self.showingDetail.toggle()
+            }
+        }, label: {
+            Image("ic_home_detailButton")
+                .foregroundColor(CustomColorName.baseText.getColor)
+        })
+    }
+    
+    private var searchButton: some View {
+        Button(action: {
+            
+        }, label: {
+            Image("ic_home_searchButton")
+                .foregroundColor(CustomColorName.baseText.getColor)
+        })
     }
 }
 

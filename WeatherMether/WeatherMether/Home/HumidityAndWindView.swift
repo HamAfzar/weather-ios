@@ -11,7 +11,7 @@ import SwiftUI
 struct HumidityAndWindView: View {
     let width: CGFloat = 340
     
-    var middleLine: some View {
+    private var middleLine: some View {
         GeometryReader { geometry in
             Path { path in
                 let height = geometry.size.height
@@ -31,14 +31,33 @@ struct HumidityAndWindView: View {
         }
     }
     
+    private var windView: some View {
+        VStack(alignment: .center, spacing: 8) {
+            Image("ic_winidyWeather")
+            BaseText(text: "11 Km/h", font: .robotoMedium(18))
+        }
+    }
+    
+    private var humidityView: some View {
+        VStack(alignment: .center, spacing: 8) {
+            Image("ic_home_drop")
+            BaseText(text: "76 %", font: .robotoMedium(18))
+        }
+        
+    }
+    
     var body: some View {
         HStack {
-            Text("Sadegh")
-                .frame(width: ((self.width - 2) / 2))
+            Spacer()
+            self.windView
+            
+            Spacer()
             self.middleLine.frame(width: 2)
-            Text("Sadegh")
-                .frame(width: ((self.width - 2) / 2))
-        }.edgesIgnoringSafeArea(.all)
+            Spacer()
+            
+            self.humidityView
+            Spacer()
+        }
     }
 }
 
