@@ -1,4 +1,4 @@
-name: CI
+name: build
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
       
     steps:
@@ -22,4 +21,4 @@ jobs:
       run: /usr/bin/xcodebuild -version
       
     - name: iPhone 11 Test
-      run: xcodebuild test -scheme weather-ios/WeatherMether/WeatherMetherTests -workspace weather-ios/WeatherMether/WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
+      run: xcodebuild test -scheme WeatherMether/WeatherMetherTests -workspace weather-ios/WeatherMether/WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
