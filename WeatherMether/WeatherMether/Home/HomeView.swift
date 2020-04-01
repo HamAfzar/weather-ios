@@ -9,16 +9,35 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var showingDetail = true
+    
+    var profileButton: some View {
+        Button(action: {
+            withAnimation {
+                self.showingDetail.toggle()
+            }
+        }, label: {
+            Image("ic_home_detailButton")
+                .foregroundColor(CustomColorName.baseText.getColor)
+        })
+    }
     
     var body: some View {
-        HomeNavigationView {
-            BaseView {
-                PageView([BaseHomeView()])
+        BaseNavigationView {
+            ZStack {
+                BaseView {
+                    //                    PageView([BaseHomeView()])
+                    BaseHomeView()
+                        .navigationBarItems(trailing: self.profileButton)
+                }
+                
+                if showingDetail {
+                    MainDetailView()
+                        .transition(.move(edge: .bottom))
+                        .edgesIgnoringSafeArea(.bottom)
+                    //                        .frame(height: 200)
+                }
             }
-            .navigationBarItems(
-                leading: Image("ic_home_searchButton"),
-                trailing: Image("ic_home_detailButton")
-            )
         }
     }
 }
