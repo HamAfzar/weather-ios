@@ -18,27 +18,3 @@ extension View {
         modifier(NavigateModifier(destination: view, binding: binding))
     }
 }
-
-// MARK: - NavigateModifier
-struct NavigateModifier<SomeView: View>: ViewModifier {
-    
-    fileprivate let destination: SomeView
-    @Binding fileprivate var binding: Bool
-    
-    // MARK: - View body
-    func body(content: Content) -> some View {
-        BaseNavigationView {
-            ZStack {
-                content
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-                NavigationLink(destination: destination
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true),
-                               isActive: $binding) {
-                                EmptyView()
-                }
-            }
-        }
-    }
-}

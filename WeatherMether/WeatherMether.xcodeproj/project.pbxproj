@@ -19,6 +19,7 @@
 		667CB4D12426196900B1D81A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CB4CF2426196900B1D81A /* LaunchScreen.storyboard */; };
 		667CB4DC2426196900B1D81A /* WeatherMetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4DB2426196900B1D81A /* WeatherMetherTests.swift */; };
 		667CB4E72426196900B1D81A /* WeatherMetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4E62426196900B1D81A /* WeatherMetherUITests.swift */; };
+		7209AA0F2434D30C00CC9533 /* NavigateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7209AA0E2434D30C00CC9533 /* NavigateModifier.swift */; };
 		7269999F242D4FF900C48596 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7269999E242D4FF900C48596 /* BaseNavigationView.swift */; };
 		726C40BA242DD0BA00FE10B7 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 726C40B0242DCFC500FE10B7 /* Roboto-Black.ttf */; };
 		726C40BB242DD0BC00FE10B7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 726C40B4242DCFC500FE10B7 /* Roboto-Bold.ttf */; };
@@ -78,6 +79,7 @@
 		667CB4E22426196900B1D81A /* WeatherMetherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherMetherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CB4E62426196900B1D81A /* WeatherMetherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMetherUITests.swift; sourceTree = "<group>"; };
 		667CB4E82426196900B1D81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7209AA0E2434D30C00CC9533 /* NavigateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateModifier.swift; sourceTree = "<group>"; };
 		7269999E242D4FF900C48596 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		726C40B0242DCFC500FE10B7 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		726C40B1242DCFC500FE10B7 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				72CD6535242CF54D001E9638 /* ShadowedView.swift */,
 				7269999E242D4FF900C48596 /* BaseNavigationView.swift */,
 				726C40C4242DED8300FE10B7 /* BaseText.swift */,
+				7209AA0E2434D30C00CC9533 /* NavigateModifier.swift */,
 			);
 			path = BaseViews;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				726C40C3242DDC7700FE10B7 /* BaseHomeView.swift in Sources */,
 				6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */,
 				6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */,
+				7209AA0F2434D30C00CC9533 /* NavigateModifier.swift in Sources */,
 				6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */,
 				72F50429242F25E8002DD18C /* HumidityAndWindView.swift in Sources */,
 				667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */,
