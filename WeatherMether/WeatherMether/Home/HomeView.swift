@@ -24,7 +24,7 @@ struct HomeView: View {
                 
                 VStack {
                     if showingDetail {
-                        optionView(showView: $showingDetail)
+                        OptionView(showView: $showingDetail)
                             .transition(.move(edge: .bottom))
                             .edgesIgnoringSafeArea(.bottom)
                     }

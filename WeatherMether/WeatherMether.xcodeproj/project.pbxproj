@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A109242CA696006CC1EF /* NetworkError.swift */; };
-		6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10B242CAA8A006CC1EF /* APIRouter.swift */; };
-		6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10D242CB592006CC1EF /* JsonParser.swift */; };
-		6655A110242CB8A3006CC1EF /* NetworkRequestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */; };
+		663EBBB224332A8C00B044CA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB124332A8C00B044CA /* Cache.swift */; };
+		663EBBB82433332A00B044CA /* NetworkRequestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB42433332A00B044CA /* NetworkRequestAgent.swift */; };
+		663EBBB92433332A00B044CA /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB52433332A00B044CA /* APIRouter.swift */; };
+		663EBBBA2433332A00B044CA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB62433332A00B044CA /* NetworkError.swift */; };
+		663EBBBB2433332A00B044CA /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EBBB72433332A00B044CA /* JsonParser.swift */; };
 		667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C42426196700B1D81A /* AppDelegate.swift */; };
 		667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C62426196700B1D81A /* SceneDelegate.swift */; };
 		667CB4C92426196700B1D81A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CB4C82426196700B1D81A /* ContentView.swift */; };
@@ -31,7 +32,7 @@
 		726C40C5242DED8300FE10B7 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726C40C4242DED8300FE10B7 /* BaseText.swift */; };
 		726C40C7242E044200FE10B7 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726C40C6242E044200FE10B7 /* ColorAssets.xcassets */; };
 		7284B39C2434A9460079BCE8 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284B39B2434A9460079BCE8 /* VisualEffectView.swift */; };
-		7289A71C2433B7940027DDC6 /* optionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7289A71B2433B7940027DDC6 /* optionView.swift */; };
+		7289A71C2433B7940027DDC6 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7289A71B2433B7940027DDC6 /* OptionView.swift */; };
 		72C1366E243386DA00C3DB22 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C1366D243386DA00C3DB22 /* PageViewController.swift */; };
 		72C13670243386FB00C3DB22 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C1366F243386FB00C3DB22 /* PageView.swift */; };
 		72C136722433871D00C3DB22 /* PangeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C136712433871D00C3DB22 /* PangeControl.swift */; };
@@ -61,10 +62,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6655A109242CA696006CC1EF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		6655A10B242CAA8A006CC1EF /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		6655A10D242CB592006CC1EF /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
-		6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestAgent.swift; sourceTree = "<group>"; };
+		663EBBB124332A8C00B044CA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		663EBBB42433332A00B044CA /* NetworkRequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestAgent.swift; sourceTree = "<group>"; };
+		663EBBB52433332A00B044CA /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		663EBBB62433332A00B044CA /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		663EBBB72433332A00B044CA /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		667CB4C12426196700B1D81A /* WeatherMether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CB4C42426196700B1D81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CB4C62426196700B1D81A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		726C40C4242DED8300FE10B7 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		726C40C6242E044200FE10B7 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		7284B39B2434A9460079BCE8 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
-		7289A71B2433B7940027DDC6 /* optionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionView.swift; sourceTree = "<group>"; };
+		7289A71B2433B7940027DDC6 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		72C1366D243386DA00C3DB22 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		72C1366F243386FB00C3DB22 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		72C136712433871D00C3DB22 /* PangeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PangeControl.swift; sourceTree = "<group>"; };
@@ -128,13 +130,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6655A108242CA67E006CC1EF /* Network */ = {
+		663EBBB024332A6100B044CA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				6655A109242CA696006CC1EF /* NetworkError.swift */,
-				6655A10B242CAA8A006CC1EF /* APIRouter.swift */,
-				6655A10D242CB592006CC1EF /* JsonParser.swift */,
-				6655A10F242CB8A3006CC1EF /* NetworkRequestAgent.swift */,
+				663EBBB124332A8C00B044CA /* Cache.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		663EBBB32433332A00B044CA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				663EBBB42433332A00B044CA /* NetworkRequestAgent.swift */,
+				663EBBB52433332A00B044CA /* APIRouter.swift */,
+				663EBBB62433332A00B044CA /* NetworkError.swift */,
+				663EBBB72433332A00B044CA /* JsonParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -162,13 +172,14 @@
 		667CB4C32426196700B1D81A /* WeatherMether */ = {
 			isa = PBXGroup;
 			children = (
+				663EBBB32433332A00B044CA /* Network */,
+				663EBBB024332A6100B044CA /* Utilities */,
 				7289A71A2433B7850027DDC6 /* Detail */,
 				726C40C1242DDC6100FE10B7 /* Home */,
 				726C408C242DCCA900FE10B7 /* Resources */,
 				72CD6532242CE8D9001E9638 /* Extensions */,
 				72CD652F242CE4DC001E9638 /* BaseViews */,
 				726C40C8242E6F3500FE10B7 /* Assets */,
-				6655A108242CA67E006CC1EF /* Network */,
 				667CB4C42426196700B1D81A /* AppDelegate.swift */,
 				667CB4C62426196700B1D81A /* SceneDelegate.swift */,
 				667CB4C82426196700B1D81A /* ContentView.swift */,
@@ -256,7 +267,7 @@
 		7289A71A2433B7850027DDC6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				7289A71B2433B7940027DDC6 /* optionView.swift */,
+				7289A71B2433B7940027DDC6 /* OptionView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -454,25 +465,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				667CB4C52426196700B1D81A /* AppDelegate.swift in Sources */,
+				663EBBB92433332A00B044CA /* APIRouter.swift in Sources */,
 				72DF92D6243478F100B1687C /* ViewExtensions.swift in Sources */,
 				72C136722433871D00C3DB22 /* PangeControl.swift in Sources */,
 				726C40C5242DED8300FE10B7 /* BaseText.swift in Sources */,
 				7284B39C2434A9460079BCE8 /* VisualEffectView.swift in Sources */,
 				726C40C0242DD18D00FE10B7 /* FontExtensions.swift in Sources */,
+				663EBBBB2433332A00B044CA /* JsonParser.swift in Sources */,
+				663EBBB82433332A00B044CA /* NetworkRequestAgent.swift in Sources */,
 				726C40C3242DDC7700FE10B7 /* BaseHomeView.swift in Sources */,
-				6655A10C242CAA8A006CC1EF /* APIRouter.swift in Sources */,
-				6655A10E242CB592006CC1EF /* JsonParser.swift in Sources */,
 				7209AA0F2434D30C00CC9533 /* NavigateModifier.swift in Sources */,
-				6655A10A242CA696006CC1EF /* NetworkError.swift in Sources */,
 				72F50429242F25E8002DD18C /* HumidityAndWindView.swift in Sources */,
 				667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */,
-				7289A71C2433B7940027DDC6 /* optionView.swift in Sources */,
+				7289A71C2433B7940027DDC6 /* OptionView.swift in Sources */,
 				72CD6534242CE8F3001E9638 /* ColorExtensions.swift in Sources */,
 				7269999F242D4FF900C48596 /* BaseNavigationView.swift in Sources */,
+				663EBBB224332A8C00B044CA /* Cache.swift in Sources */,
 				667CB4C92426196700B1D81A /* ContentView.swift in Sources */,
-				6655A110242CB8A3006CC1EF /* NetworkRequestAgent.swift in Sources */,
 				72CD6531242CE4ED001E9638 /* BaseView.swift in Sources */,
 				72CD6536242CF54D001E9638 /* ShadowedView.swift in Sources */,
+				663EBBBA2433332A00B044CA /* NetworkError.swift in Sources */,
 				72C13670243386FB00C3DB22 /* PageView.swift in Sources */,
 				72C1366E243386DA00C3DB22 /* PageViewController.swift in Sources */,
 				72C136742433893700C3DB22 /* HomeView.swift in Sources */,

@@ -11,11 +11,6 @@ import Combine
 
 struct NetworkRequestAgent {
     
-    struct Response<T> {
-        let value: T
-        let response: URLResponse
-    }
-    
     func run<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Response<T>, NetworkError> {
         return URLSession.shared
             .dataTaskPublisher(for: request)
@@ -28,5 +23,12 @@ struct NetworkRequestAgent {
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+}
+
+extension NetworkRequestAgent {
+    struct Response<T> {
+        let value: T
+        let response: URLResponse
     }
 }

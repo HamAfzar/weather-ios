@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct optionView: View {
+struct OptionView: View {
     @Binding var showView: Bool
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Color.clear.frame(height: geometry.size.height / 4)
+                Color.clear.frame(height: geometry.size.height / 3)
                 self.blurView
             }
         }
@@ -102,6 +102,6 @@ struct optionView: View {
 
 struct optionView_Previews: PreviewProvider {
     static var previews: some View {
-        optionView(showView: .constant(true))
+        OptionView(showView: .constant(true))
     }
 }
