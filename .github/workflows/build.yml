@@ -15,9 +15,7 @@ jobs:
 steps:
 - name: Checkout
 - uses: actions/checkout@v2
-- name: CocoaPod Install
-run: pod install
 - name: Force xcode 11
-run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+run: sudo xcode-select -switch /Applications/Xcode_11.4.app
 - name: iPhone 11 Test
-run: xcodebuild test -scheme affirm-me-test -workspace affirm-me.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
+run: xcodebuild test -scheme WeatherMetherTests -workspace WeatherMether.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.4'
