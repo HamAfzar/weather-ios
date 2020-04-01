@@ -14,11 +14,9 @@ jobs:
 
 steps:
 - name: Checkout
-uses: actions/checkout@v1
+uses: actions/checkout@v2
 - name: CocoaPod Install
 run: pod install
-#- name: Testing....
-# run: ls /Applications | grep Xcode
 - name: Force xcode 11
 run: sudo xcode-select -switch /Applications/Xcode_11.3.app
 - name: iPhone 11 Test
