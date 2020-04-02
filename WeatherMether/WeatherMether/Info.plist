@@ -64,5 +64,7 @@
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to get your location to find the place you live in and get the best possible data for you.</string>
 </dict>
 </plist>
