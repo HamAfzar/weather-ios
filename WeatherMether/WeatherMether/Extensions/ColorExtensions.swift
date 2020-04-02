@@ -7,14 +7,19 @@
 //
 
 import SwiftUI
+import UIKit
 
 enum CustomColorName: String {
     case baseBackground                    = "baseBackground"
-    case shadowedViewShadow                = "shadowedViewShadow"
     case baseText                          = "baseTextColor"
+    case shadowedViewLightShadow           = "lightShadow"
+    case shadowedViewDarkShadow            = "darkShadow"
+    case mainDetailView                    = "mainDetailView"
     case splashBackground                  =
         "splashBackground"
-    
+}
+
+extension CustomColorName {
     var getColor: Color {
         return Color(self.rawValue)
     }

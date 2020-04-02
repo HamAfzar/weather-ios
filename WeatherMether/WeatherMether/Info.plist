@@ -58,16 +58,13 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SansMobile-Black.ttf</string>
-		<string>SansMobile-Bold.ttf</string>
-		<string>SansMobile-Light.ttf</string>
-		<string>SansMobile-Medium.ttf</string>
-		<string>SansMobile.ttf</string>
 		<string>Roboto-Black.ttf</string>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Light.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to get your location to find the place you live in and get the best possible data for you.</string>
 </dict>
 </plist>
