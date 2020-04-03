@@ -15,6 +15,9 @@ enum CustomColorName: String {
     case shadowedViewLightShadow           = "lightShadow"
     case shadowedViewDarkShadow            = "darkShadow"
     case mainDetailView                    = "mainDetailView"
+    case textFieldPlaceHolder              = "textFieldPlaceHolder"
+    case textField                         = "textField"
+    case lowerDegree                       = "lowerDegree"
 }
 
 extension CustomColorName {
