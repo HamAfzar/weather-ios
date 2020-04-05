@@ -9,9 +9,16 @@
 import SwiftUI
 
 struct SplashView: View {
+    @ObservedObject var viewModel: OnBoardingViewModel
+    @State var haveLocation = false
+    @State var haveLocationPermission = false
     
-    var body: some View {
-        GeometryReader { geometry in
+    init(viewModel: OnBoardingViewModel = OnBoardingViewModel()) {
+        self.viewModel = viewModel
+    }
+    
+    private var splashViewGenerator: some View {
+       GeometryReader { geometry in
             ZStack {
             CustomColorName.splashBackground.getColor.edgesIgnoringSafeArea(.all)
                 VStack { Image(ImageRefrences.weatherTypography.getImageName)
@@ -22,6 +29,13 @@ struct SplashView: View {
                     Spacer()
                 }
             }
+        }
+    }
+    
+    var body: some View {
+        ZStack {
+            splashViewGenerator
+            
         }
     }
 }

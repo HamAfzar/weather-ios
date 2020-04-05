@@ -32,8 +32,25 @@ class LocationManager: NSObject, ObservableObject {
         
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func stopUpdatingLocation() {
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func requestLocationAccess() {
         self.locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func startUpdateLocation() {
         self.locationManager.startUpdatingLocation()
+    }
+    
+    func getLocationPermissionAfterATime(time: Double) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            self.requestLocationAccess()
+            self.startUpdateLocation()
+        }
     }
     
     private func geocode() {

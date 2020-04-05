@@ -9,12 +9,9 @@
 import Foundation
 
 enum APIRouter {
-    case getContacts
-    case getContact(id: Int)
-    case createContact(body: [String: Any])
-    case updateContact(id: Int, body: [String: Any])
+    case getWeather
     
-    private static let baseURLString = "ar.farazpardazan.com"
+    private static let baseURLString = ""
     
     private enum HTTPMethod {
         case get
@@ -34,23 +31,15 @@ enum APIRouter {
     
     private var method: HTTPMethod {
         switch self {
-        case .getContacts: return .get
-        case .getContact: return .get
-        case .createContact: return .post
-        case .updateContact: return .put
+        case .getWeather:
+            return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .getContacts:
-            return "/contacts.json"
-        case .getContact(let id):
-            return "/contacts/\(id).json"
-        case .createContact:
-            return "/contacts.json"
-        case .updateContact(let id, _):
-            return "/contacts/\(id).json"
+        case .getWeather:
+            return "https://weather-meather-weather-meather.fandogh.cloud/weather?cityId=112931"
         }
     }
     
@@ -73,12 +62,6 @@ enum APIRouter {
         request.httpMethod = method.value
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-//        if let token = FPUserManager.token {
-//            headers["Authorization"] = "\(token)"
-//        }
-        
-//        request.allHTTPHeaderFields = headers
-        
         if let parameters = parameters {
             if method == .post {
                 do {
@@ -93,6 +76,35 @@ enum APIRouter {
         
         return request
     }
+    
+//    func request()  -> AnyPublisher<URLRequest,NetworkError> {
+//           return Future<URLRequest,NetworkError> { result in
+//               let encodedPath = self.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+//               let urlString = "\(APIRouter.baseURLString)\(encodedPath)"
+//               
+//               guard let url = URL(string: urlString) else {
+//                   return result(.failure(NetworkError.parsing(description: "URL parsing failed!")))
+//               }
+//               
+//               var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
+//               request.httpMethod = self.method.value
+//               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//               
+//               if let parameters = self.parameters {
+//                   if self.method == .post {
+//                       do {
+//                           let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+//                           
+//                           request.httpBody = jsonData
+//                       } catch {
+//                           print(error.localizedDescription)
+//                       }
+//                   }
+//               }
+//               
+//               return result(.success(request))
+//           }.eraseToAnyPublisher()
+//       }
 }
 
 public typealias Parameters = [String: Any]

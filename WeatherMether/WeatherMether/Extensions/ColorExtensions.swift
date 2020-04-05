@@ -15,8 +15,7 @@ enum CustomColorName: String {
     case shadowedViewLightShadow           = "lightShadow"
     case shadowedViewDarkShadow            = "darkShadow"
     case mainDetailView                    = "mainDetailView"
-    case splashBackground                  =
-        "splashBackground"
+    case splashBackground                  = "splashBackground"
 }
 
 extension CustomColorName {
