@@ -12,47 +12,58 @@ import Combine
 
 class OnBoardingViewModel: ObservableObject {
     @ObservedObject private var locationManager = LocationManager()
+//    @State private var haveLocationPermission: Bool?
     @Published var dataSource: WeatherModel?
     @Published var showLoading = false
     @Published var showHomeView = false
     @Published var showSearchView = false
     @Published var error: NetworkError?
     
-    //    @State var locationPermissionState = false
+    private var disposables = Set<AnyCancellable>()
+    
     func initFunctions() {
-        requestLocation()
-        self.showLoading = true
-        if let havePermission = haveLocationPermission() {
-            if havePermission {
-                self.provideData()
-            } else {
-                self.showLoading = false
-                self.showSearchView = true
-            }
-        }
+        self.checkLocationPermission()
+    }
+    
+    func checkIfLoocationCatched() {
+        self.locationManager.startUpdateLocation()
+        locationManager.$location.sink { [weak self] location in
+        if let lat = self?.locationManager.location?.coordinate.latitude,
+            let lon = self?.locationManager.location?.coordinate.longitude {
+            self?.locationManager.stopUpdatingLocation()
+            self?.provideData(location: (lat: lat, lon: lon))
+            }}.store(in: &disposables)
     }
     
     func requestLocation() {
         self.locationManager.getLocationPermissionAfterATime(time: 1.0)
     }
     
-    func haveLocationPermission() -> Bool? {
-        if let status = locationManager.status {
-            if status == .authorizedWhenInUse || status == .authorizedAlways {
-                return true
-            } else {
-                return false
+    func checkLocationPermission() {
+        self.showLoading = true
+        locationManager.$status.sink { [weak self] status in
+            guard let status = status else {
+                self?.requestLocation()
+                return
             }
-        }
-        return nil
+            
+            if status == .authorizedWhenInUse || status == .authorizedAlways {
+                self?.checkIfLoocationCatched()
+            } else {
+                self?.showLoading = false
+                self?.showSearchView = true
+            }
+        }.store(in: &disposables)
     }
     
-    func provideData() {
-        requestData()
+    func provideData(location: (lat: Double, lon: Double)) {
+        // we should use caching
+        self.disposables.removeAll()
+        requestData(location: (lat: location.lat, lon: location.lon))
     }
     
-    func requestData() {
-        let request: AnyPublisher<WeatherModel, NetworkError> = NetworkRequestAgent.run(APIRouter.getWeather)
+    func requestData(location: (lat: Double, lon: Double)) {
+        let request: AnyPublisher<WeatherModel, NetworkError> = NetworkRequestAgent.run(APIRouter.getWeatherByLocation(lat: location.lat, lon: location.lon, unit: "metric"))
         request.sink(receiveCompletion: { completion in
             switch completion {
             case .failure(let error):
@@ -61,6 +72,8 @@ class OnBoardingViewModel: ObservableObject {
             }
         }, receiveValue: { [weak self] weatherModel in
             self?.dataSource = weatherModel
-        })
+            self?.showLoading = false
+            self?.showHomeView = true
+        }).store(in: &disposables)
     }
 }

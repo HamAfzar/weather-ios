@@ -9,10 +9,14 @@
 import Foundation
 
 enum APIRouter {
-    case getWeather
+    case getWeatherById(cityId: String, unit: String)
+    case getWeatherByLocation(lat: Double, lon: Double, unit: String)
+    case getWeatherByName(name: String, unit: String)
     
-    private static let baseURLString = ""
-    
+    private static let baseURLString = "http://ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/"
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/weather/city?id=112931
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/weather/loc?lat=35.69&lng=51.42
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/city?name=tehran
     private enum HTTPMethod {
         case get
         case post
@@ -31,15 +35,22 @@ enum APIRouter {
     
     private var method: HTTPMethod {
         switch self {
-        case .getWeather:
+        case .getWeatherById,
+             .getWeatherByLocation,
+             .getWeatherByName:
             return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .getWeather:
-            return "https://weather-meather-weather-meather.fandogh.cloud/weather?cityId=112931"
+        case .getWeatherById(let cityId, let unit):
+            return "weather/city?id=\(cityId)&units=\(unit)"
+        case .getWeatherByLocation(let lat, let lon, let unit):
+            return "weather/loc?lat=\(lat)&lng=\(lon)&units=\(unit)"
+        case .getWeatherByName(let name, let unit):
+            return "city?name=\(name)&units=\(unit)"
+        //unit: metric, imperial
         }
     }
     

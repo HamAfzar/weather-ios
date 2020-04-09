@@ -16,16 +16,17 @@ struct WeatherModel: Codable {
 
 // MARK: - Current
 struct Current: Codable {
-    var time: Int?
+    var time: Double?
     var city: City?
     var stats: CurrentStats?
 }
 
 // MARK: - City
 struct City: Codable {
-    var id: Int?
+    var id: Double?
     var name, country: String?
-    var timezone, sunrise, sunset: Int?
+    var timezone: Int?
+    var sunrise, sunset: Double?
     var lat, lng: Double?
 }
 
@@ -51,9 +52,13 @@ struct CurrentStats: Codable {
 }
 
 enum Condition: String, Codable {
-    case clear = "CLEAR"
-    case clouds = "CLOUDS"
-    case rain = "RAIN"
+    case thunderstorm = "Thunderstorm"
+    case drizzle = "Drizzle"
+    case rain = "Rain"
+    case snow = "Snow"
+    case atmosphere = "Atmosphere"
+    case clear = "Clear"
+    case clouds = "Clouds"
 }
 
 enum IconID: String, Codable {
