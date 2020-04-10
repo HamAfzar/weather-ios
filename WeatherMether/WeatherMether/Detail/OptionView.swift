@@ -23,8 +23,8 @@ struct OptionView: View {
     private var blurView: some View {
         ZStack {
             CustomColorName.mainDetailView.getColor
-                .opacity(0.2)
-                .contrast(-8)
+                .opacity(0.1)
+                .contrast(-2)
             VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialLight))
             VStack {
                 self.titleView
@@ -96,7 +96,7 @@ struct OptionView: View {
             }
         }, label: {
             BaseText(text: "Close", font: Font.robotoBold(16))
-        })
+        }).padding()
     }
 }
 

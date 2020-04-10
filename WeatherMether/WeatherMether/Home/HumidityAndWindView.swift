@@ -36,6 +36,7 @@ struct HumidityAndWindView: View {
             Image("ic_winidyWeather")
             BaseText(text: "11 Km/h", font: .robotoMedium(18))
         }
+        .frame(minWidth: 0, maxWidth: .infinity)
     }
     
     private var humidityView: some View {
@@ -43,6 +44,7 @@ struct HumidityAndWindView: View {
             Image("ic_home_drop")
             BaseText(text: "76 %", font: .robotoMedium(18))
         }
+        .frame(minWidth: 0, maxWidth: .infinity)
         
     }
     
