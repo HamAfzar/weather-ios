@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OnBoarding: View {
-//    @ObservedObject private var locationManager = LocationManager()
+    //    @ObservedObject private var locationManager = LocationManager()
     @ObservedObject var viewModel: OnBoardingViewModel
     @State private var showErrorAlert = false
     @State private var showHomeView = false
@@ -39,18 +39,15 @@ struct OnBoarding: View {
     }
     
     var body: some View {
-//        NavigationView {
         ZStack {
-//            navigate(to: showSearchView(), when: self.$showSearchView)
-            navigate(to: HomeView(), when: self.$showHomeView)
-            
             LoadingView(isShowing: .constant(self.viewModel.showLoading)) {
                 ZStack {
                     self.splashViewGenerator.alert(isPresented: self.$showErrorAlert) {
                         Alert(title: Text(self.viewModel.error?.localizedDescription ?? "")) }
-                }}
+                }
+            }
         }
-//        }
+        .navigate(to: HomeView(), when: self.$showHomeView)
     }
 }
 
