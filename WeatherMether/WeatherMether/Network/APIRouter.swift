@@ -9,13 +9,14 @@
 import Foundation
 
 enum APIRouter {
-    case getContacts
-    case getContact(id: Int)
-    case createContact(body: [String: Any])
-    case updateContact(id: Int, body: [String: Any])
+    case getWeatherById(cityId: String, unit: String)
+    case getWeatherByLocation(lat: Double, lon: Double, unit: String)
+    case getWeatherByName(name: String, unit: String)
     
-    private static let baseURLString = "ar.farazpardazan.com"
-    
+    private static let baseURLString = "http://ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/"
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/weather/city?id=112931
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/weather/loc?lat=35.69&lng=51.42
+//    ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/city?name=tehran
     private enum HTTPMethod {
         case get
         case post
@@ -34,23 +35,22 @@ enum APIRouter {
     
     private var method: HTTPMethod {
         switch self {
-        case .getContacts: return .get
-        case .getContact: return .get
-        case .createContact: return .post
-        case .updateContact: return .put
+        case .getWeatherById,
+             .getWeatherByLocation,
+             .getWeatherByName:
+            return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .getContacts:
-            return "/contacts.json"
-        case .getContact(let id):
-            return "/contacts/\(id).json"
-        case .createContact:
-            return "/contacts.json"
-        case .updateContact(let id, _):
-            return "/contacts/\(id).json"
+        case .getWeatherById(let cityId, let unit):
+            return "weather/city?id=\(cityId)&units=\(unit)"
+        case .getWeatherByLocation(let lat, let lon, let unit):
+            return "weather/loc?lat=\(lat)&lng=\(lon)&units=\(unit)"
+        case .getWeatherByName(let name, let unit):
+            return "city?name=\(name)&units=\(unit)"
+        //unit: metric, imperial
         }
     }
     
@@ -73,12 +73,6 @@ enum APIRouter {
         request.httpMethod = method.value
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-//        if let token = FPUserManager.token {
-//            headers["Authorization"] = "\(token)"
-//        }
-        
-//        request.allHTTPHeaderFields = headers
-        
         if let parameters = parameters {
             if method == .post {
                 do {
@@ -93,6 +87,35 @@ enum APIRouter {
         
         return request
     }
+    
+//    func request()  -> AnyPublisher<URLRequest,NetworkError> {
+//           return Future<URLRequest,NetworkError> { result in
+//               let encodedPath = self.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+//               let urlString = "\(APIRouter.baseURLString)\(encodedPath)"
+//               
+//               guard let url = URL(string: urlString) else {
+//                   return result(.failure(NetworkError.parsing(description: "URL parsing failed!")))
+//               }
+//               
+//               var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
+//               request.httpMethod = self.method.value
+//               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//               
+//               if let parameters = self.parameters {
+//                   if self.method == .post {
+//                       do {
+//                           let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+//                           
+//                           request.httpBody = jsonData
+//                       } catch {
+//                           print(error.localizedDescription)
+//                       }
+//                   }
+//               }
+//               
+//               return result(.success(request))
+//           }.eraseToAnyPublisher()
+//       }
 }
 
 public typealias Parameters = [String: Any]
