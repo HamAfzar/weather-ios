@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HourlyPredectionView: View {
-
+    
     var body: some View {
         BaseView {
             GeometryReader { geometry in
@@ -30,7 +30,7 @@ struct HourlyPredectionView: View {
     private func getView(time: String, imageName: String, degree: String) -> some View {
         var customView: some View {
             VStack {
-                BaseText(text: time, font: Font.robotoMedium(14))
+                self.getAttributedTime(text: time)
                 Spacer()
                 Image(imageName)
                     .resizable()
@@ -41,6 +41,19 @@ struct HourlyPredectionView: View {
         }
         
         return customView
+    }
+    
+    private func getAttributedTime(text: String) -> some View {
+        let endIndex = text.endIndex
+        let startIndex = text.index(text.endIndex, offsetBy: -2)
+        var textView: some View {
+            HStack(alignment: .bottom, spacing: 0) {
+                BaseText(text: String(text[text.startIndex..<startIndex]), font: Font.robotoMedium(14))
+                BaseText(text: String(text[startIndex..<endIndex]), font: Font.robotoMedium(12))
+            }
+        }
+        
+        return textView
     }
     
     private func getHours() -> [String] {

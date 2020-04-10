@@ -48,7 +48,7 @@
 		72C136722433871D00C3DB22 /* PangeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C136712433871D00C3DB22 /* PangeControl.swift */; };
 		72C136742433893700C3DB22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C136732433893700C3DB22 /* HomeView.swift */; };
 		72CD6531242CE4ED001E9638 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6530242CE4ED001E9638 /* BaseView.swift */; };
-		72CD6534242CE8F3001E9638 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6533242CE8F3001E9638 /* ColorExtensions.swift */; };
+		72CD6534242CE8F3001E9638 /* ColorRefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6533242CE8F3001E9638 /* ColorRefrences.swift */; };
 		72CD6536242CF54D001E9638 /* ShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD6535242CF54D001E9638 /* ShadowedView.swift */; };
 		72DF92D6243478F100B1687C /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF92D5243478F100B1687C /* ViewExtensions.swift */; };
 		72F50429242F25E8002DD18C /* HumidityAndWindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F50428242F25E8002DD18C /* HumidityAndWindView.swift */; };
@@ -119,7 +119,7 @@
 		72C136712433871D00C3DB22 /* PangeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PangeControl.swift; sourceTree = "<group>"; };
 		72C136732433893700C3DB22 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		72CD6530242CE4ED001E9638 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		72CD6533242CE8F3001E9638 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		72CD6533242CE8F3001E9638 /* ColorRefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRefrences.swift; sourceTree = "<group>"; };
 		72CD6535242CF54D001E9638 /* ShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowedView.swift; sourceTree = "<group>"; };
 		72DF92D5243478F100B1687C /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		72F50428242F25E8002DD18C /* HumidityAndWindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityAndWindView.swift; sourceTree = "<group>"; };
@@ -288,6 +288,7 @@
 		726C40C8242E6F3500FE10B7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				72CD6533242CE8F3001E9638 /* ColorRefrences.swift */,
 				667CB4CA2426196900B1D81A /* Assets.xcassets */,
 				726C40C6242E044200FE10B7 /* ColorAssets.xcassets */,
 			);
@@ -366,7 +367,6 @@
 		72CD6532242CE8D9001E9638 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				72CD6533242CE8F3001E9638 /* ColorExtensions.swift */,
 				726C40BF242DD18D00FE10B7 /* FontExtensions.swift */,
 				72DF92D5243478F100B1687C /* ViewExtensions.swift */,
 				72B9B5B02435F5F600FD3253 /* EnvironmentValuesExtensions.swift */,
@@ -556,7 +556,7 @@
 				72F50429242F25E8002DD18C /* HumidityAndWindView.swift in Sources */,
 				667CB4C72426196700B1D81A /* SceneDelegate.swift in Sources */,
 				7289A71C2433B7940027DDC6 /* OptionView.swift in Sources */,
-				72CD6534242CE8F3001E9638 /* ColorExtensions.swift in Sources */,
+				72CD6534242CE8F3001E9638 /* ColorRefrences.swift in Sources */,
 				7269999F242D4FF900C48596 /* BaseNavigationView.swift in Sources */,
 				663EBBB224332A8C00B044CA /* Cache.swift in Sources */,
 				667CB4C92426196700B1D81A /* ContentView.swift in Sources */,
