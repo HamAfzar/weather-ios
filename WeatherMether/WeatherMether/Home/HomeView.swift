@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private  var showingDetail = false
+    @State private var showingDetail = false
+    @State private var showingSearch = false
+    @State private var showingMainDetailView = false
     
     var body: some View {
         BaseNavigationView {
@@ -24,13 +26,21 @@ struct HomeView: View {
                 
                 VStack {
                     if showingDetail {
-                        OptionView(showView: $showingDetail)
+                        OptionView(showView: $showingDetail, showMainDetailView: $showingMainDetailView)
                             .transition(.move(edge: .bottom))
                             .edgesIgnoringSafeArea(.bottom)
                     }
                 }
+                
+                VStack {
+                    if self.showingSearch {
+                        SearchView(showView: $showingSearch)
+                            .transition(.move(edge: .top))
+                            .edgesIgnoringSafeArea(.all)
+                    }
+                }
             }
-        }
+        }.navigate(to: MainDetailView(), when: $showingMainDetailView)
     }
     
     private var profileButton: some View {
@@ -41,16 +51,18 @@ struct HomeView: View {
         }, label: {
             Image("ic_home_detailButton")
                 .foregroundColor(CustomColorName.baseText.getColor)
-        })
+        }).padding([.leading, .trailing, .top, .bottom], 4)
     }
     
     private var searchButton: some View {
         Button(action: {
-            
+            withAnimation {
+                self.showingSearch.toggle()
+            }
         }, label: {
             Image("ic_home_searchButton")
                 .foregroundColor(CustomColorName.baseText.getColor)
-        })
+        }).padding([.leading, .trailing, .top, .bottom], 4)
     }
 }
 

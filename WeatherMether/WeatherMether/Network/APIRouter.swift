@@ -9,12 +9,11 @@
 import Foundation
 
 enum APIRouter {
-    case getContacts
-    case getContact(id: Int)
-    case createContact(body: [String: Any])
-    case updateContact(id: Int, body: [String: Any])
+    case getWeatherById(cityId: String, unit: String)
+    case getWeatherByLocation(lat: Double, lon: Double, unit: String)
+    case getCityByNameQuery(name: String)
     
-    private static let baseURLString = "ar.farazpardazan.com"
+    private static let baseURLString = "http://ec2-52-28-48-52.eu-central-1.compute.amazonaws.com/"
     
     private enum HTTPMethod {
         case get
@@ -34,23 +33,22 @@ enum APIRouter {
     
     private var method: HTTPMethod {
         switch self {
-        case .getContacts: return .get
-        case .getContact: return .get
-        case .createContact: return .post
-        case .updateContact: return .put
+        case .getWeatherById,
+             .getWeatherByLocation,
+             .getCityByNameQuery:
+            return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .getContacts:
-            return "/contacts.json"
-        case .getContact(let id):
-            return "/contacts/\(id).json"
-        case .createContact:
-            return "/contacts.json"
-        case .updateContact(let id, _):
-            return "/contacts/\(id).json"
+        case .getWeatherById(let cityId, let unit):
+            return "weather/city?id=\(cityId)&units=\(unit)"
+        case .getWeatherByLocation(let lat, let lon, let unit):
+            return "weather/loc?lat=\(lat)&lng=\(lon)&units=\(unit)"
+        case .getCityByNameQuery(let name):
+            return "city?name=\(name)"
+        //unit: metric, imperial
         }
     }
     
@@ -73,20 +71,14 @@ enum APIRouter {
         request.httpMethod = method.value
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-//        if let token = FPUserManager.token {
-//            headers["Authorization"] = "\(token)"
-//        }
-        
-//        request.allHTTPHeaderFields = headers
-        
         if let parameters = parameters {
             if method == .post {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
                     
                     request.httpBody = jsonData
-                } catch {
-                    print(error.localizedDescription)
+                } catch let error {
+                    throw NetworkError.parsing(description: error.localizedDescription)
                 }
             }
         }

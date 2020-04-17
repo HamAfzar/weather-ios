@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OptionView: View {
     @Binding var showView: Bool
+    @Binding var showMainDetailView: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,8 +24,8 @@ struct OptionView: View {
     private var blurView: some View {
         ZStack {
             CustomColorName.mainDetailView.getColor
-                .opacity(0.2)
-                .contrast(-8)
+                .opacity(0.1)
+                .contrast(-2)
             VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialLight))
             VStack {
                 self.titleView
@@ -55,7 +56,7 @@ struct OptionView: View {
     
     private var detailButton: some View {
         Button(action: {
-            print("Detail")
+            self.showMainDetailView.toggle()
         }, label: {
             HStack {
                 Image("ic_detail")
@@ -96,12 +97,13 @@ struct OptionView: View {
             }
         }, label: {
             BaseText(text: "Close", font: Font.robotoBold(16))
-        })
+        }).padding()
     }
 }
 
+
 struct optionView_Previews: PreviewProvider {
     static var previews: some View {
-        OptionView(showView: .constant(true))
+        OptionView(showView: .constant(true), showMainDetailView: .constant(false))
     }
 }

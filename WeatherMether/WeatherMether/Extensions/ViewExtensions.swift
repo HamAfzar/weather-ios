@@ -17,4 +17,15 @@ extension View {
     func navigate<SomeView: View>(to view: SomeView, when binding: Binding<Bool>) -> some View {
         modifier(NavigateModifier(destination: view, binding: binding))
     }
+    
+    func getHorizontalImageAndTextView(text: String, font: Font, imageName: String) -> some View {
+        var customView: some View {
+            HStack {
+                Image(imageName)
+                BaseText(text: text, font: font)
+            }
+        }
+        
+        return customView
+    }
 }
