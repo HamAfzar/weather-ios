@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var showingDetail = false
     @State private var showingSearch = false
+    @State private var showingMainDetailView = false
     
     var body: some View {
         BaseNavigationView {
@@ -25,7 +26,7 @@ struct HomeView: View {
                 
                 VStack {
                     if showingDetail {
-                        OptionView(showView: $showingDetail)
+                        OptionView(showView: $showingDetail, showMainDetailView: $showingMainDetailView)
                             .transition(.move(edge: .bottom))
                             .edgesIgnoringSafeArea(.bottom)
                     }
@@ -39,7 +40,7 @@ struct HomeView: View {
                     }
                 }
             }
-        }
+        }.navigate(to: MainDetailView(), when: $showingMainDetailView)
     }
     
     private var profileButton: some View {

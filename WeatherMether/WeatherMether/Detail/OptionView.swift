@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OptionView: View {
     @Binding var showView: Bool
+    @Binding var showMainDetailView: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -55,7 +56,7 @@ struct OptionView: View {
     
     private var detailButton: some View {
         Button(action: {
-            print("Detail")
+            self.showMainDetailView.toggle()
         }, label: {
             HStack {
                 Image("ic_detail")
@@ -100,8 +101,9 @@ struct OptionView: View {
     }
 }
 
+
 struct optionView_Previews: PreviewProvider {
     static var previews: some View {
-        OptionView(showView: .constant(true))
+        OptionView(showView: .constant(true), showMainDetailView: .constant(false))
     }
 }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BaseNavigationView<Content: View>: View {
+struct BaseNavigationView<Content>: View where Content: View {
     private let content: Content
     
     public init(@ViewBuilder content: () -> Content) {
