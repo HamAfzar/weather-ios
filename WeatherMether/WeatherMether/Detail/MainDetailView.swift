@@ -27,34 +27,14 @@ struct MainDetailView: View {
     }
     
     private var detailList: some View {
-        BaseList {
+        BaseList(height: 160) {
             GeneralInfoRow()
-                .scaledToFill()
-                .frame(height: 160)
-                .clipped()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(CustomColorName.baseBackground.getColor)
             
-            HourlyPredectionView()
-                .scaledToFill()
-                .frame(height: 160)
-                .clipped()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(CustomColorName.baseBackground.getColor)
+            HourlyPredectionRow()
             
-            GeneralInfoRow()
-                .scaledToFill()
-                .frame(height: 160)
-                .clipped()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(CustomColorName.baseBackground.getColor)
+            DailyPredectionRow()
             
-            GeneralInfoRow()
-                .scaledToFill()
-                .frame(height: 160)
-                .clipped()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(CustomColorName.baseBackground.getColor)
+            MoreDetailRow()
         }
     }
 }

@@ -10,15 +10,23 @@ import SwiftUI
 
 struct BaseList<Content>: View where Content: View {
     private let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
+    var height: CGFloat
+
+    init(height: CGFloat, @ViewBuilder content: () -> Content) {
         self.content = content()
         UITableView.appearance().separatorStyle = .none
+        
+        self.height = height
     }
     
     var body: some View {
         List {
             content
+                .scaledToFill()
+                .frame(height: self.height)
+                .clipped()
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(CustomColorName.baseBackground.getColor)
         }
     }
 }

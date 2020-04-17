@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct HourlyPredectionView: View {
+struct HourlyPredectionRow: View {
     
     var body: some View {
         BaseView {
@@ -17,30 +17,18 @@ struct HourlyPredectionView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(self.getHours(), id: \.self) { hour in
-                                self.getView(time: hour, imageName: "ic_detail_rainyWeather_large", degree: "12°")
+                                VerticalImageAndTextView(topView: self.getAttributedTime(text: hour),
+                                                         bottomView: BaseText(text: "12°", font: Font.robotoBold(20)),
+                                                         image: Image("ic_detail_rainyWeather_large"),
+                                                         frame: CGRect(x: 0, y: 0, width: 20, height: 20)
+                                )
                             }
-                            
                         }.frame(minWidth: 0, maxWidth: .infinity)
+                        .padding([.leading, .top, .bottom, .trailing], 16)
                     }
                 }
             }
         }
-    }
-    
-    private func getView(time: String, imageName: String, degree: String) -> some View {
-        var customView: some View {
-            VStack {
-                self.getAttributedTime(text: time)
-                Spacer()
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                Spacer()
-                BaseText(text: degree, font: Font.robotoBold(20))
-            }.padding([.leading, .trailing, .bottom, .top], 16)
-        }
-        
-        return customView
     }
     
     private func getAttributedTime(text: String) -> some View {
@@ -48,8 +36,12 @@ struct HourlyPredectionView: View {
         let startIndex = text.index(text.endIndex, offsetBy: -2)
         var textView: some View {
             HStack(alignment: .bottom, spacing: 0) {
-                BaseText(text: String(text[text.startIndex..<startIndex]), font: Font.robotoMedium(14))
-                BaseText(text: String(text[startIndex..<endIndex]), font: Font.robotoMedium(12))
+                if text == "Now" {
+                    BaseText(text: text, font: Font.robotoBold(14))
+                } else {
+                    BaseText(text: String(text[text.startIndex..<startIndex]), font: Font.robotoMedium(14))
+                    BaseText(text: String(text[startIndex..<endIndex]), font: Font.robotoMedium(12))
+                }
             }
         }
         
@@ -58,24 +50,19 @@ struct HourlyPredectionView: View {
     
     private func getHours() -> [String] {
         var stringHours: [String] = []
-        let formatter = DateFormatter()
         let calendar = Calendar(identifier: .gregorian)
-        formatter.dateFormat = "ha"
-        formatter.amSymbol = "AM"
-        formatter.pmSymbol = "PM"
+        stringHours.append("Now")
         
-        for index in 0...5 {
+        for index in 1...5 {
             guard let newDate = calendar.date(byAdding: .hour, value: index * 3, to: Date()) else { break }
-            let newHour = formatter.string(from: newDate)
-            stringHours.append(newHour)
+            stringHours.append(newDate.timeOfDate(dateFormat: "ha"))
         }
-        
         return stringHours
     }
 }
 
 struct HourlyPredectionView_Previews: PreviewProvider {
     static var previews: some View {
-        HourlyPredectionView()
+        HourlyPredectionRow()
     }
 }

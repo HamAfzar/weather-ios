@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NavigateModifier<SomeView: View>: ViewModifier {
+struct NavigateModifier<SomeView>: ViewModifier where SomeView: View {
     
     let destination: SomeView
     @Binding var binding: Bool

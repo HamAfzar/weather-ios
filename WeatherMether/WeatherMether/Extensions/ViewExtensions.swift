@@ -18,7 +18,7 @@ extension View {
         modifier(NavigateModifier(destination: view, binding: binding))
     }
     
-    func getImageAndTextView(text: String, font: Font, imageName: String) -> some View {
+    func getHorizontalImageAndTextView(text: String, font: Font, imageName: String) -> some View {
         var customView: some View {
             HStack {
                 Image(imageName)
@@ -27,9 +27,5 @@ extension View {
         }
         
         return customView
-    }
-    
-    func tesst() -> some View {
-        Text("sadegh")
     }
 }

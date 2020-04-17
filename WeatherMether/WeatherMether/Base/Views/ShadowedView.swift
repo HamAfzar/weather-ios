@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ShadowedView<Content: View>: View {
+struct ShadowedView<Content>: View where Content: View {
     var width: CGFloat
     var height: CGFloat
     
