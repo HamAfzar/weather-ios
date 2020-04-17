@@ -59,6 +59,7 @@ enum Condition: String, Codable {
     case atmosphere = "Atmosphere"
     case clear = "Clear"
     case clouds = "Clouds"
+    case mist = "Mist"
 }
 
 enum IconID: String, Codable {

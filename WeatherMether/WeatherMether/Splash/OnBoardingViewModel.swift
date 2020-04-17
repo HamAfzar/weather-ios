@@ -12,11 +12,12 @@ import Combine
 
 class OnBoardingViewModel: ObservableObject {
     @ObservedObject private var locationManager = LocationManager()
-//    @State private var haveLocationPermission: Bool?
+    //    @State private var haveLocationPermission: Bool?
     @Published var dataSource: WeatherModel?
     @Published var showLoading = false
     @Published var showHomeView = false
     @Published var showSearchView = false
+    @Published var showError = false
     @Published var error: NetworkError?
     
     private var disposables = Set<AnyCancellable>()
@@ -28,10 +29,10 @@ class OnBoardingViewModel: ObservableObject {
     func checkIfLoocationCatched() {
         self.locationManager.startUpdateLocation()
         locationManager.$location.sink { [weak self] location in
-        if let lat = self?.locationManager.location?.coordinate.latitude,
-            let lon = self?.locationManager.location?.coordinate.longitude {
-            self?.locationManager.stopUpdatingLocation()
-            self?.provideData(location: (lat: lat, lon: lon))
+            if let lat = self?.locationManager.location?.coordinate.latitude,
+                let lon = self?.locationManager.location?.coordinate.longitude {
+                self?.locationManager.stopUpdatingLocation()
+                self?.provideData(location: (lat: lat, lon: lon))
             }}.store(in: &disposables)
     }
     
@@ -49,9 +50,11 @@ class OnBoardingViewModel: ObservableObject {
             
             if status == .authorizedWhenInUse || status == .authorizedAlways {
                 self?.checkIfLoocationCatched()
-            } else {
+            } else if status == .denied {
                 self?.showLoading = false
-                self?.showSearchView = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self?.showSearchView = true
+                }
             }
         }.store(in: &disposables)
     }
@@ -64,10 +67,12 @@ class OnBoardingViewModel: ObservableObject {
     
     func requestData(location: (lat: Double, lon: Double)) {
         let request: AnyPublisher<WeatherModel, NetworkError> = NetworkRequestAgent.run(APIRouter.getWeatherByLocation(lat: location.lat, lon: location.lon, unit: "metric"))
-        request.sink(receiveCompletion: { completion in
+        request.sink(receiveCompletion: { [weak self] completion in
             switch completion {
             case .failure(let error):
-                self.error = error
+                self?.showLoading = false
+                self?.error = error
+                self?.showError = true
             case .finished: break
             }
         }, receiveValue: { [weak self] weatherModel in
