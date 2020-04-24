@@ -12,13 +12,12 @@ import Combine
 
 class OnBoardingViewModel: ObservableObject {
     @ObservedObject private var locationManager = LocationManager()
-    //    @State private var haveLocationPermission: Bool?
     @Published var dataSource: WeatherModel?
     @Published var showLoading = false
     @Published var showHomeView = false
     @Published var showSearchView = false
     @Published var showError = false
-    @Published var error: NetworkError?
+//    @Published var error: NetworkError?
     
     private var disposables = Set<AnyCancellable>()
     
