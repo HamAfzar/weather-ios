@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct BaseHomeView: View {
+    var current: Current?
     
     private var cityNameAndDateView: some View {
         VStack(alignment: .center, spacing: 4) {
-            BaseText(text: "New York", font: .robotoBold(29))
+            BaseText(text: current?.city?.name ?? "New York", font: .robotoBold(29))
             BaseText(text: "Mon, 2 Dec", font: .robotoMedium(18))
         }
     }
@@ -21,12 +22,12 @@ struct BaseHomeView: View {
         VStack(alignment: .leading, spacing: 8) {
             
             HStack(alignment: .top, spacing: 8) {
-                BaseText(text: "9", font: .robotoBold(60))
+                BaseText(text: "\(current?.stats?.temp ?? 0)", font: .robotoBold(60))
                 BaseText(text: "°C", font: .roboto(33)).padding(.top, 8)
             }
             HStack(alignment: .center, spacing: 8) {
-                Image("ic_rainyWeather")
-                BaseText(text: "Raining", font: .robotoMedium(20))
+                Image(current?.stats?.iconID?.rawValue ?? "ic_rainyWeather")
+                BaseText(text: current?.stats?.condition?.rawValue ?? "Raining", font: .robotoMedium(20))
             }
         }
     }

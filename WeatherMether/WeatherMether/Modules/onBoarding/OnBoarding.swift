@@ -34,15 +34,16 @@ struct OnBoarding: View {
     }
     
     var body: some View {
-        ZStack {
-            LoadingView(isShowing: .constant(self.viewModel.showLoading)) {
+//        ZStack {
+//            LoadingView(isShowing: .constant(self.viewModel.showLoading)) {
                 ZStack {
-                    self.splashViewGenerator.alert(isPresented: self.$viewModel.showError) {
-                        Alert(title: Text(self.viewModel.error?.localizedDescription ?? "")) }
+                    self.splashViewGenerator
+//                        .alert(isPresented: self.$viewModel.showError) {
+//                        Alert(title: Text(self.viewModel.error?.localizedDescription ?? "")) }
                 }
-            }
-        }
-        .navigate(to: HomeView(), when: self.$viewModel.showHomeView)
+//            }
+//        }
+                    .navigate(to: HomeView(viewModel: HomeViewModel()), when: self.$viewModel.showHomeView)
         .navigate(to: SearchView(showView: self.$viewModel.showHomeView), when: self.$viewModel.showSearchView)
     }
 }

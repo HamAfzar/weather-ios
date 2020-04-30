@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MainDetailView: View {
+    var weatherModel: WeatherModel?
+    
     var body: some View {
         BaseView {
             VStack {

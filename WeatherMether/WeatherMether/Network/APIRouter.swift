@@ -9,7 +9,7 @@
 import Foundation
 
 enum APIRouter {
-    case getWeatherById(cityId: String, unit: String)
+    case getWeatherById(cityId: Int, unit: String)
     case getWeatherByLocation(lat: Double, lon: Double, unit: String)
     case getCityByNameQuery(name: String)
     
@@ -48,7 +48,6 @@ enum APIRouter {
             return "weather/loc?lat=\(lat)&lng=\(lon)&units=\(unit)"
         case .getCityByNameQuery(let name):
             return "city?name=\(name)"
-        //unit: metric, imperial
         }
     }
     

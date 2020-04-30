@@ -101,7 +101,6 @@ struct OptionView: View {
     }
 }
 
-
 struct optionView_Previews: PreviewProvider {
     static var previews: some View {
         OptionView(showView: .constant(true), showMainDetailView: .constant(false))

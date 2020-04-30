@@ -13,17 +13,41 @@ struct HomeView: View {
     @State private var showingSearch = false
     @State private var showingMainDetailView = false
     
+    @State private var haveValue: Bool = false
+    
+    @ObservedObject var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        self.viewModel.checkLocationPermission()
+        haveValue =  self.viewModel.dataSource.capacity > 0
+    }
+    
+    private var pageView: PageView<BaseHomeView> {
+        if haveValue {
+            return PageView(viewModel.dataSource.map { BaseHomeView(current: $0.current) })
+        } else {
+            return PageView([BaseHomeView()])
+        }
+    }
+    
+    private var navigateToMainDetail: MainDetailView {
+        if haveValue {
+            return MainDetailView(weatherModel: viewModel.dataSource[pageView.currentPage])
+        } else {
+            return MainDetailView(weatherModel: nil)
+        }
+    }
+    
     var body: some View {
         BaseNavigationView {
             ZStack {
                 BaseView {
-                    PageView([BaseHomeView()])
-                        .navigationBarItems(
+                     pageView.navigationBarItems(
                             leading: self.searchButton,
-                            trailing: self.profileButton
-                    )
+                            trailing: self.profileButton)
                 }
-                
+
                 VStack {
                     if showingDetail {
                         OptionView(showView: $showingDetail, showMainDetailView: $showingMainDetailView)
@@ -31,7 +55,7 @@ struct HomeView: View {
                             .edgesIgnoringSafeArea(.bottom)
                     }
                 }
-                
+
                 VStack {
                     if self.showingSearch {
                         SearchView(showView: $showingSearch)
@@ -40,7 +64,7 @@ struct HomeView: View {
                     }
                 }
             }
-        }.navigate(to: MainDetailView(), when: $showingMainDetailView)
+        }.navigate(to: navigateToMainDetail, when: $showingMainDetailView)
     }
     
     private var profileButton: some View {
@@ -68,6 +92,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: HomeViewModel())
     }
 }
