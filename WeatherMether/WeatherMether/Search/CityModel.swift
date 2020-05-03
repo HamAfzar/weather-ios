@@ -8,13 +8,17 @@
 
 import Foundation
 
-struct CityModel: Codable {
+struct CityModel: Codable, Identifiable, Hashable {
     var id: Int?
     var name, state, country: String?
     var coord: Coord?
+    
+    static func == (lhs: CityModel, rhs: CityModel) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 // MARK: - Coord
-struct Coord: Codable {
+struct Coord: Codable, Hashable {
     var lat, lon: Double?
 }

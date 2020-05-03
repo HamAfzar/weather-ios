@@ -12,7 +12,6 @@ import Combine
 
 class OnBoardingViewModel: ObservableObject {
     @ObservedObject private var locationManager = LocationManager()
-    //    @State private var haveLocationPermission: Bool?
     @Published var dataSource: WeatherModel?
     @Published var showLoading = false
     @Published var showHomeView = false

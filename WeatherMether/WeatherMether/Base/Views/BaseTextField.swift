@@ -7,32 +7,38 @@
 //
 
 import SwiftUI
+import Combine
 
 struct BaseTextField: View {
     @Binding var text: String
-    var placeholder: BaseText
+    var placeHolder: BaseText
     var image: Image?
     var editingChanged: (Bool) -> Void = { _ in }
     var commit: () -> Void = {}
     
+    private var textField: some View {
+        TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+            .font(Font.robotoMedium(14))
+            .foregroundColor(CustomColorName.baseText.getColor)
+            .accentColor(CustomColorName.baseText.getColor)
+            .frame(height: 32)
+            .cornerRadius(10)
+    }
+    
     var body: some View {
+
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 10).fill((CustomColorName.textField.getColor))
             if text.isEmpty {
                 HStack(spacing: 8) {
-                    placeholder
+                    self.placeHolder
                 }
                 .padding(.leading, 28)
             }
             
             HStack(spacing: 4) {
                 image?.foregroundColor(CustomColorName.textFieldPlaceHolder.getColor).padding(.leading, 8)
-                TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                    .font(Font.robotoMedium(14))
-                    .foregroundColor(CustomColorName.baseText.getColor)
-                    .accentColor(CustomColorName.baseText.getColor)
-                    .frame(height: 32)
-                    .cornerRadius(10)
+                self.textField
             }
         }
     }

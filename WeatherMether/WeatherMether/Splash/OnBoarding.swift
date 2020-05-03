@@ -15,7 +15,6 @@ struct OnBoarding: View {
     init(viewModel: OnBoardingViewModel = OnBoardingViewModel()) {
         self.viewModel = viewModel
         self.viewModel.initFunctions()
-        
     }
     
     private var splashViewGenerator: some View {

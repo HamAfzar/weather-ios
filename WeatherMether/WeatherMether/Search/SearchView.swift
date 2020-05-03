@@ -9,19 +9,34 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Binding var showView: Bool
     @Environment(\.localStatusBarStyle) var statusBarStyle
     @State var location: String = ""
     
+    @ObservedObject var viewModel: SearchViewModel
+    
+    init(showView: Binding<Bool>) {
+        self.viewModel = SearchViewModel(showView: showView)
+    }
+    
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+
+        _ = Binding<String>(get: {
+            if self.location.count > 3 {
+                self.viewModel.getCities(city: self.location)
+            }
+            
+            return self.location
+        }, set: {
+            self.location = $0
+        })
+        
+        return VStack(alignment: .center, spacing: 0) {
             self.searchView
-            Rectangle().fill(Color.red)
+            CitiesListView(cities: self.viewModel.dataSource)
                 .navigationBarHidden(true)
         }
-            
-            .onAppear {
-                self.statusBarStyle.currentStyle = .lightContent
+        .onAppear {
+            self.statusBarStyle.currentStyle = .lightContent
         }
         .onDisappear {
             self.statusBarStyle.currentStyle = .default
@@ -41,13 +56,11 @@ struct SearchView: View {
             
             BaseTextField(
                 text: $location,
-                placeholder: BaseText(text: "Search for City, Your Location", font: Font.roboto(14), color: CustomColorName.textFieldPlaceHolder.getColor),
+                placeHolder: BaseText(text: "Search for City, Your Location", font: Font.roboto(14), color: CustomColorName.textFieldPlaceHolder.getColor),
                 image: Image("ic_search_placeHolder"),
-                editingChanged: { complete in
-                    print("\(complete)")
-            }, commit: {
-                print("ASD")
-            })
+                editingChanged: { _ in },
+                commit: {})
+            
             self.cancelButton
         }
         .padding(EdgeInsets(top: 48, leading: 16, bottom: 16, trailing: 16))
@@ -56,7 +69,7 @@ struct SearchView: View {
     private var cancelButton: some View {
         Button(action: {
             UIApplication.shared.endEditing()
-            self.showView = false
+            self.viewModel.showView = false
         }, label: {
             BaseText(text: "Cancel", font: Font.robotoMedium(12), color: CustomColorName.mainDetailView.getColor)
         })
