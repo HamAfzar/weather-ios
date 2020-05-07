@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MoreDetailRow: View {
+    var current: Current?
+    
     var body: some View {
         BaseView {
             GeometryReader { geometry in

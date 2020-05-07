@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct HourlyPredectionRow: View {
+    var hourly: [Forcast]?
     
     var body: some View {
         BaseView {

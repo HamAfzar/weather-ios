@@ -56,7 +56,7 @@ extension HumidityAndWindView {
             return ""
         }
         
-        return "\(humidity) %"
+        return "\(humidity)%"
     }
     
     private func humidityView() -> some View {

@@ -14,30 +14,35 @@ struct MainDetailView: View {
     var body: some View {
         BaseView {
             VStack {
-                self.titleView
+                getTitleView()
                 self.detailList
             }
         }
     }
     
-    private var titleView: some View {
-        HStack {
-            BaseText(text: "New York", font: Font.robotoBold(25))
-            Spacer()
-            BaseText(text: "Mon, 2 Dec", font: Font.robotoMedium(18))
-        }.padding(EdgeInsets(top: 28, leading: 16, bottom: 0, trailing: 16))
-    }
-    
     private var detailList: some View {
         BaseList(height: 160) {
-            GeneralInfoRow()
+            GeneralInfoRow(currentStats: weatherModel?.current?.stats)
             
-            HourlyPredectionRow()
+            HourlyPredectionRow(hourly: weatherModel?.hourly)
             
-            DailyPredectionRow()
+            DailyPredectionRow(daily: weatherModel?.daily)
             
-            MoreDetailRow()
+            MoreDetailRow(current: weatherModel?.current)
         }
+    }
+}
+
+extension MainDetailView {
+    func getTitleView() -> some View {
+        let cityName = weatherModel?.current?.city?.name ?? ""
+        let date = DateManager().formatDate(timeValue: weatherModel?.current?.time) ?? ""
+        
+        return HStack {
+            BaseText(text: cityName, font: Font.robotoBold(25))
+            Spacer()
+            BaseText(text: date, font: Font.robotoMedium(18))
+        }.padding(EdgeInsets(top: 28, leading: 16, bottom: 0, trailing: 16))
     }
 }
 

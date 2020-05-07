@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct DailyPredectionRow: View {
+    var daily: [Forcast]?
+    
     var body: some View {
         BaseView {
             GeometryReader { geometry in
