@@ -13,14 +13,15 @@ struct HomeView: View {
     @State private var showingSearch = false
     @State private var showingMainDetailView = false
     
-    @State private var haveValue: Bool = false
+    private var haveValue: Bool {
+        return self.viewModel.dataSource.count > 0
+    }
     
     @ObservedObject var viewModel: HomeViewModel
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         self.viewModel.checkLocationPermission()
-        haveValue =  self.viewModel.dataSource.capacity > 0
     }
     
     private var pageView: PageView<BaseHomeView> {
@@ -40,6 +41,7 @@ struct HomeView: View {
     }
     
     var body: some View {
+        
         BaseNavigationView {
             ZStack {
                 BaseView {

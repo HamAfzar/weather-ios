@@ -9,8 +9,68 @@
 import SwiftUI
 
 struct HumidityAndWindView: View {
+    var currentStats: CurrentStats?
     let width: CGFloat = 340
     
+    var body: some View {
+        HStack {
+            if currentStats == nil {
+                EmptyView()
+            } else {
+                Spacer()
+                self.getWindView().frame(minWidth: 0, maxWidth: .infinity)
+                
+                Spacer()
+                self.middleLine.frame(width: 2)
+                Spacer()
+                
+                self.humidityView().frame(minWidth: 0, maxWidth: .infinity)
+                Spacer()
+            }
+        }
+    }
+}
+
+extension HumidityAndWindView {
+    private func getWindSpeed() -> String {
+        guard let windSpeed = currentStats?.windSpeed else {
+            return ""
+        }
+        
+        // this should change when we apply imperial format
+        let windSpeedFormat = "Km/h"
+        return "\(Int(windSpeed))" + " " + windSpeedFormat
+    }
+    
+    private func getWindView() -> some View {
+        let windSpeedImageName = "ic_winidyWeather"
+        let windSpeed = getWindSpeed()
+        return VStack(alignment: .center, spacing: 8) {
+            Image(windSpeedImageName)
+            BaseText(text: windSpeed, font: .robotoMedium(18))
+        }
+    }
+    
+    private func getHumidity() -> String {
+        guard let humidity = currentStats?.humidity else {
+            return ""
+        }
+        
+        return "\(humidity) %"
+    }
+    
+    private func humidityView() -> some View {
+        let humidityImageName = "ic_home_drop"
+        let humidity = getHumidity()
+        
+        return VStack(alignment: .center, spacing: 8) {
+            Image(humidityImageName)
+            BaseText(text: humidity, font: .robotoMedium(18))
+        }
+    }
+}
+
+extension HumidityAndWindView {
     private var middleLine: some View {
         GeometryReader { geometry in
             Path { path in
@@ -28,37 +88,6 @@ struct HumidityAndWindView: View {
                 ])
             }
             .fill(CustomColorName.baseText.getColor)
-        }
-    }
-    
-    private var windView: some View {
-        VStack(alignment: .center, spacing: 8) {
-            Image("ic_winidyWeather")
-            BaseText(text: "11 Km/h", font: .robotoMedium(18))
-        }
-        .frame(minWidth: 0, maxWidth: .infinity)
-    }
-    
-    private var humidityView: some View {
-        VStack(alignment: .center, spacing: 8) {
-            Image("ic_home_drop")
-            BaseText(text: "76 %", font: .robotoMedium(18))
-        }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        
-    }
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            self.windView
-            
-            Spacer()
-            self.middleLine.frame(width: 2)
-            Spacer()
-            
-            self.humidityView
-            Spacer()
         }
     }
 }
