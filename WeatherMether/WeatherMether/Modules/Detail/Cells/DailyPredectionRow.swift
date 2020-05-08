@@ -16,39 +16,56 @@ struct DailyPredectionRow: View {
             GeometryReader { geometry in
                 ShadowedView(width: geometry.size.width, height: 136) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        
-                        HStack(alignment: .center, spacing: 0) {
-                            ForEach(self.getDays(), id: \.self) { day in
-                                VerticalImageAndTextView(topView: BaseText(text: day, font: Font.robotoMedium(14)),
-                                                         bottomView: self.minAndMaxView,
-                                                         image: Image("ic_detail_rainyWeather_large"),
-                                                         frame: CGRect(x: 0, y: 0, width: 20, height: 20)
-                                )
-                            }
-                        }.frame(minWidth: 0, maxWidth: .infinity)
+                        self.getItemsView()
+                            .frame(minWidth: 0, maxWidth: .infinity)
                             .padding([.leading, .top, .bottom, .trailing], 16)
                     }
                 }
             }
         }
     }
-    
-    private var minAndMaxView: some View {
-        HStack(alignment: .center, spacing: 4) {
-            BaseText(text: "12°", font: Font.robotoBold(20))
-            BaseText(text: "4°", font: Font.robotoBold(20), color: CustomColorName.lowerDegree.getColor)
+}
+
+extension DailyPredectionRow {
+    private func getItemsView() -> some View {
+        HStack(alignment: .center, spacing: 0) {
+            ForEach(self.daily ?? [], id: \.self) { forcast in
+                self.getItemView(forcast: forcast)
+            }
         }
     }
     
-    private func getDays() -> [String] {
-        var days: [String] = []
-        let calendar = Calendar(identifier: .gregorian)
+    private func getItemView(forcast: Forcast) -> some View {
+        let dayOfWeek = DateManager().formatDayOfWeek(timeValue: forcast.time) ?? ""
+        let imageName = forcast.stats?.iconID?.rawValue ?? ""
         
-        for index in 1...5 {
-            guard let date = calendar.date(byAdding: .weekday, value: index, to: Date()) else { break }
-            days.append(date.dayOfWeek)
+        return VerticalImageAndTextView(
+            topView: BaseText(text: dayOfWeek, font: Font.robotoMedium(14)),
+            bottomView: self.minAndMaxView(stats: forcast.stats),
+            image: Image(imageName),
+            frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    }
+    
+    private func minAndMaxView(stats: ForcastStats?) -> some View {
+        let minTemp = getMinTemp(minTemp: stats?.tempMin)
+        let maxTemp = getMaxTemp(maxTemp: stats?.tempMax)
+        
+        return HStack(alignment: .center, spacing: 4) {
+            BaseText(text: maxTemp, font: Font.robotoBold(20))
+            BaseText(text: minTemp, font: Font.robotoBold(20), color: CustomColorName.lowerDegree.getColor)
         }
-        return days
+    }
+    
+    private func getMinTemp(minTemp: Double?) -> String {
+        guard let minTemp = minTemp else { return "" }
+        
+        return "\(Int(minTemp))°"
+    }
+    
+    private func getMaxTemp(maxTemp: Double?) -> String {
+        guard let maxTemp = maxTemp else { return "" }
+        
+        return "\(Int(maxTemp))°"
     }
 }
 

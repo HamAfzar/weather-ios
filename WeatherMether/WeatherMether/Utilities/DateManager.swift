@@ -31,6 +31,17 @@ struct DateManager {
         return (dateFotmatter.string(from: date))
     }
     
+    func formatDayOfWeek(timeValue: Double?) -> String? {
+        guard let timeValue = timeValue else { return nil }
+        
+        let date = getDateFromDouble(javaTimeStamp: timeValue)
+        let dateFotmatter = DateFormatter()
+        dateFotmatter.calendar = getCalendar()
+        dateFotmatter.dateFormat = "EEEE"
+        
+        return (dateFotmatter.string(from: date))
+    }
+    
     func getDateFromDouble(javaTimeStamp: Double) -> Date {
         return Date.init(timeIntervalSince1970: TimeInterval(javaTimeStamp))
     }
