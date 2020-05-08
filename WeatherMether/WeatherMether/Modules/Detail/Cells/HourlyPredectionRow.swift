@@ -70,10 +70,10 @@ extension HourlyPredectionRow {
         return dateManager.formatTime(timeValue: time) ?? ""
     }
     
-    private func getTemp(temp: Double?) -> String {
+    private func getTemp(temp: Int?) -> String {
         guard let temp = temp else { return "" }
         
-        return "\(Int(temp))°"
+        return "\(temp)°"
     }
 }
 

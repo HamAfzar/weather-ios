@@ -50,7 +50,7 @@ extension BaseHomeView {
     
     private func getTemp() -> String {
         guard let temp = current?.stats?.temp else { return "" }
-        return "\(Int(temp))"
+        return "\(temp)"
     }
     
     private func getDegree() -> String {

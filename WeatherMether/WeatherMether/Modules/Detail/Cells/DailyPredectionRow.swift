@@ -56,16 +56,16 @@ extension DailyPredectionRow {
         }
     }
     
-    private func getMinTemp(minTemp: Double?) -> String {
+    private func getMinTemp(minTemp: Int?) -> String {
         guard let minTemp = minTemp else { return "" }
         
-        return "\(Int(minTemp))°"
+        return "\(minTemp)°"
     }
     
-    private func getMaxTemp(maxTemp: Double?) -> String {
+    private func getMaxTemp(maxTemp: Int?) -> String {
         guard let maxTemp = maxTemp else { return "" }
         
-        return "\(Int(maxTemp))°"
+        return "\(maxTemp)°"
     }
 }
 

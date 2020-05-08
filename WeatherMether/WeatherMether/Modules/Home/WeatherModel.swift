@@ -34,7 +34,7 @@ struct City: Codable {
 struct CurrentStats: Codable {
     var condition: Condition?
     var iconID: IconID?
-    var temp: Double?
+    var temp: Int?
     var feelsLike, tempMin, tempMax, pressure: Int?
     var humidity, cloudiness: Int?
     var windSpeed: Double?
@@ -107,7 +107,7 @@ enum UV: String, Codable {
 }
 
 // MARK: - Forcast
-struct Forcast: Codable, Hashable {    
+struct Forcast: Codable, Hashable {
     var time: Double?
     var stats: ForcastStats?
 }
@@ -116,7 +116,7 @@ struct Forcast: Codable, Hashable {
 struct ForcastStats: Codable, Hashable {
     var status: Condition?
     var iconID: IconID?
-    var temp, tempMin, tempMax: Double?
+    var temp, tempMin, tempMax: Int?
 
     enum CodingKeys: String, CodingKey {
         case status
