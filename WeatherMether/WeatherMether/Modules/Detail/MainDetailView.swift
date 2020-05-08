@@ -24,7 +24,7 @@ struct MainDetailView: View {
         BaseList(height: 160) {
             GeneralInfoRow(currentStats: weatherModel?.current?.stats)
             
-            HourlyPredectionRow(hourly: weatherModel?.hourly)
+            HourlyPredectionRow(hourly: getHourlyItems())
             
             DailyPredectionRow(daily: weatherModel?.daily)
             
@@ -43,6 +43,22 @@ extension MainDetailView {
             Spacer()
             BaseText(text: date, font: Font.robotoMedium(18))
         }.padding(EdgeInsets(top: 28, leading: 16, bottom: 0, trailing: 16))
+    }
+    
+    private func getHourlyItems() -> [Forcast]? {
+        return [makeCurrentAsAForcastItem()] + (weatherModel?.hourly ?? [])
+    }
+    
+    private func makeCurrentAsAForcastItem() -> Forcast {
+        var forcast = Forcast()
+        var forcastStats = ForcastStats()
+        forcast.time = weatherModel?.current?.time
+        forcastStats.iconID = weatherModel?.current?.stats?.iconID
+        forcastStats.status = weatherModel?.current?.stats?.condition
+        forcastStats.temp = weatherModel?.current?.stats?.temp
+        forcast.stats = forcastStats
+        
+        return forcast
     }
 }
 

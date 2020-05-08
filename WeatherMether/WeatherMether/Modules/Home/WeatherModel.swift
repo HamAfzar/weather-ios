@@ -39,7 +39,7 @@ struct CurrentStats: Codable {
     var humidity, cloudiness: Int?
     var windSpeed: Double?
     var windDegree, visibility: Int?
-    var uv: String?
+    var uv: UV?
     var rain3H, snow3H: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -83,14 +83,37 @@ enum IconID: String, Codable {
     case mistNight = "50n"
 }
 
+enum UV: String, Codable {
+    case low = "LOW"
+    case moderate = "MODERATE"
+    case high = "HIGH"
+    case veryHigh = "VERY_HIGH"
+    case extreme = "EXTREME"
+    
+    func getProperString() -> String {
+        switch self {
+        case .low:
+            return "Low"
+        case .moderate:
+            return "Moderate"
+        case .high:
+            return "High"
+        case .veryHigh:
+            return "Very High"
+        case .extreme:
+            return "Extreme"
+        }
+    }
+}
+
 // MARK: - Forcast
-struct Forcast: Codable {
-    var time: Int?
+struct Forcast: Codable, Hashable {    
+    var time: Double?
     var stats: ForcastStats?
 }
 
 // MARK: - DailyStats
-struct ForcastStats: Codable {
+struct ForcastStats: Codable, Hashable {
     var status: Condition?
     var iconID: IconID?
     var temp, tempMin, tempMax: Double?

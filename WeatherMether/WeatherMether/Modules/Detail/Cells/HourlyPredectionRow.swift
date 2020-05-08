@@ -16,29 +16,44 @@ struct HourlyPredectionRow: View {
             GeometryReader { geometry in
                 ShadowedView(width: geometry.size.width, height: 136) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(self.getHours(), id: \.self) { hour in
-                                VerticalImageAndTextView(topView: self.getAttributedTime(text: hour),
-                                                         bottomView: BaseText(text: "12°", font: Font.robotoBold(20)),
-                                                         image: Image("ic_detail_rainyWeather_large"),
-                                                         frame: CGRect(x: 0, y: 0, width: 20, height: 20)
-                                )
-                            }
-                        }.frame(minWidth: 0, maxWidth: .infinity)
-                        .padding([.leading, .top, .bottom, .trailing], 16)
+                        self.getItemsView().frame(minWidth: 0, maxWidth: .infinity)
+                            .padding([.leading, .top, .bottom, .trailing], 16)
                     }
                 }
             }
         }
     }
+}
+
+extension HourlyPredectionRow {
+    private func getItemsView() -> some View {
+        return HStack {
+            ForEach(hourly ?? [], id: \.self) { forcast in
+                self.getItemView(forcast: forcast)
+            }
+        }
+    }
     
-    private func getAttributedTime(text: String) -> some View {
+    private func getItemView(forcast: Forcast) -> some View {
+        let hour = getHour(time: forcast.time)
+        let imageName = forcast.stats?.iconID?.rawValue ?? ""
+        let temp = getTemp(temp: forcast.stats?.temp)
+        let isCurrentForcast = forcast == hourly?[0]
+        
+        return VerticalImageAndTextView(
+            topView: self.getAttributedTime(text: hour, isCurrent: isCurrentForcast),
+            bottomView: BaseText(text: temp, font: Font.robotoBold(20)),
+            image: Image(imageName),
+            frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    }
+    
+    private func getAttributedTime(text: String, isCurrent: Bool) -> some View {
         let endIndex = text.endIndex
         let startIndex = text.index(text.endIndex, offsetBy: -2)
         var textView: some View {
             HStack(alignment: .bottom, spacing: 0) {
-                if text == "Now" {
-                    BaseText(text: text, font: Font.robotoBold(14))
+                if isCurrent {
+                    BaseText(text: "Now", font: Font.robotoBold(14))
                 } else {
                     BaseText(text: String(text[text.startIndex..<startIndex]), font: Font.robotoMedium(14))
                     BaseText(text: String(text[startIndex..<endIndex]), font: Font.robotoMedium(12))
@@ -49,16 +64,16 @@ struct HourlyPredectionRow: View {
         return textView
     }
     
-    private func getHours() -> [String] {
-        var stringHours: [String] = []
-        let calendar = Calendar(identifier: .gregorian)
-        stringHours.append("Now")
+    private func getHour(time: Double?) -> String {
+        let dateManager = DateManager()
         
-        for index in 1...5 {
-            guard let newDate = calendar.date(byAdding: .hour, value: index * 3, to: Date()) else { break }
-            stringHours.append(newDate.timeOfDate(dateFormat: "ha"))
-        }
-        return stringHours
+        return dateManager.formatTime(timeValue: time) ?? ""
+    }
+    
+    private func getTemp(temp: Double?) -> String {
+        guard let temp = temp else { return "" }
+        
+        return "\(Int(temp))°"
     }
 }
 

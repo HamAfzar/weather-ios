@@ -80,7 +80,7 @@ extension GeneralInfoRow {
     
     private func getUVView() -> some View {
         let uvImageName = "ic_detail_sun"
-        let uvState = currentStats?.uv ?? ""
+        let uvState = currentStats?.uv?.getProperString() ?? ""
         let baseTextView = BaseText(text: uvState, font: Font.robotoMedium(14))
         
         return HorizontalImageAndTextView(
