@@ -44,7 +44,7 @@ extension HourlyPredectionRow {
             topView: self.getAttributedTime(text: hour, isCurrent: isCurrentForcast),
             bottomView: BaseText(text: temp, font: Font.robotoBold(20)),
             image: Image(imageName),
-            frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            frame: CGRect(x: 0, y: 0, width: 28, height: 28))
     }
     
     private func getAttributedTime(text: String, isCurrent: Bool) -> some View {

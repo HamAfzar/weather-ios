@@ -43,7 +43,7 @@ extension DailyPredectionRow {
             topView: BaseText(text: dayOfWeek, font: Font.robotoMedium(14)),
             bottomView: self.minAndMaxView(stats: forcast.stats),
             image: Image(imageName),
-            frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            frame: CGRect(x: 0, y: 0, width: 28, height: 28))
     }
     
     private func minAndMaxView(stats: ForcastStats?) -> some View {

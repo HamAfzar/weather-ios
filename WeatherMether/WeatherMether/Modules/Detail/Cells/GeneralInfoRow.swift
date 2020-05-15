@@ -33,11 +33,12 @@ extension GeneralInfoRow {
         let currentImageName = currentStats?.iconID?.rawValue ?? ""
         let currentCondition = currentStats?.condition?.rawValue ?? ""
         let baseTextView = BaseText(text: currentCondition, font: Font.robotoMedium(14))
+        let image = Image(currentImageName)
         
         return HorizontalImageAndTextView(
             view: baseTextView,
-            image: Image(currentImageName),
-            frame: CGRect(x: 0, y: 0, width: 52, height: 56))
+            image: image,
+            frame: CGRect(x: 0, y: 0, width: 56, height: 56))
     }
     
     private func getHumidity() -> String {

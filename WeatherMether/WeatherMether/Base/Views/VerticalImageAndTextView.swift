@@ -20,7 +20,7 @@ struct VerticalImageAndTextView<TopView, BottomView>: View where TopView: View, 
             
             Spacer()
             self.image?
-                .resizable()
+                .resizable().scaledToFit()
                 .frame(width: self.frame.width, height: self.frame.height)
             
             Spacer()

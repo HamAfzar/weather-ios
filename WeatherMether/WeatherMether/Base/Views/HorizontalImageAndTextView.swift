@@ -16,7 +16,7 @@ struct HorizontalImageAndTextView<CustomView>: View where CustomView: View {
     var body: some View {
         HStack {
             image?
-                .resizable()
+                .resizable().scaledToFit()
                 .frame(width: self.frame.width, height: self.frame.height)
             view
         }
