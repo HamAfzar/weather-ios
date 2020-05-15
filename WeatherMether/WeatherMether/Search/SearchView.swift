@@ -19,22 +19,13 @@ struct SearchView: View {
     }
     
     var body: some View {
-
-        _ = Binding<String>(get: {
-            if self.location.count > 3 {
-                self.viewModel.getCities(city: self.location)
-            }
-            
-            return self.location
-        }, set: {
-            self.location = $0
-        })
         
-        return VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .center, spacing: 0) {
             self.searchView
-            CitiesListView(cities: self.viewModel.dataSource)
+            CitiesListView(cities: self.viewModel.dataSource, searchedLocation: $location)
                 .navigationBarHidden(true)
         }
+            
         .onAppear {
             self.statusBarStyle.currentStyle = .lightContent
         }
@@ -44,7 +35,6 @@ struct SearchView: View {
     }
     
     private var searchView: some View {
-        
         ZStack {
             CustomColorName.baseText.getColor
             self.textField
@@ -53,13 +43,10 @@ struct SearchView: View {
     
     private var textField: some View {
         HStack(alignment: .center) {
-            
             BaseTextField(
-                text: $location,
+                text: bindingString,
                 placeHolder: BaseText(text: "Search for City, Your Location", font: Font.roboto(14), color: CustomColorName.textFieldPlaceHolder.getColor),
-                image: Image("ic_search_placeHolder"),
-                editingChanged: { _ in },
-                commit: {})
+                image: Image("ic_search_placeHolder"))
             
             self.cancelButton
         }
@@ -73,6 +60,21 @@ struct SearchView: View {
         }, label: {
             BaseText(text: "Cancel", font: Font.robotoMedium(12), color: CustomColorName.mainDetailView.getColor)
         })
+    }
+    
+    private var bindingString: Binding<String> {
+        return Binding<String>(
+            get: { self.location },
+            set: {
+                self.location = $0
+                self.textFieldDidChange()
+        })
+    }
+    
+    private func textFieldDidChange() {
+        if self.location.count >= 3 {
+            self.viewModel.getCities(city: self.location)
+        }
     }
 }
 

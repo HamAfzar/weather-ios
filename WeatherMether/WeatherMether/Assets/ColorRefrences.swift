@@ -19,6 +19,7 @@ enum CustomColorName: String {
     case textField                         = "textField"
     case lowerDegree                       = "lowerDegree"
     case splashBackground                  = "splashBackground"
+    case paleText                          = "paleText"
 }
 
 extension CustomColorName {

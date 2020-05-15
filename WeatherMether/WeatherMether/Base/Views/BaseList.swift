@@ -11,12 +11,15 @@ import SwiftUI
 struct BaseList<Content>: View where Content: View {
     private let content: Content
     var height: CGFloat
-
-    init(height: CGFloat, @ViewBuilder content: () -> Content) {
+    var cellColor: Color
+    
+    init(height: CGFloat, cellColor: Color = CustomColorName.baseBackground.getColor, @ViewBuilder content: () -> Content) {
         self.content = content()
         UITableView.appearance().separatorStyle = .none
-        
+        UITableView.appearance().backgroundColor = UIColor.clear
+
         self.height = height
+        self.cellColor = cellColor
     }
     
     var body: some View {
@@ -26,7 +29,7 @@ struct BaseList<Content>: View where Content: View {
                 .frame(height: self.height)
                 .clipped()
                 .listRowInsets(EdgeInsets())
-                .listRowBackground(CustomColorName.baseBackground.getColor)
+                .listRowBackground(cellColor)
         }
     }
 }
