@@ -3,6 +3,16 @@
     {
       "filename" : "nounSunset685074.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "sunset.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

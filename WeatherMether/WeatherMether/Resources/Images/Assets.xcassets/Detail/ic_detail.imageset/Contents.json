@@ -1,12 +1,22 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "nounDetailAnalysis1455100.pdf"
+      "filename" : "nounDetailAnalysis1455100.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "detailAnalysis.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
